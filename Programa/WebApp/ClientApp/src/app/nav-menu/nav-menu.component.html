@@ -1,0 +1,42 @@
+<header>
+  <nav
+    class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-primary border-bottom box-shadow mb-3"
+  >
+    <div class="container">
+      <a class="navbar-brand" [routerLink]="['/']">Proyecto #1 CRM</a>
+      <div
+        class="navbar-collapse collapse d-sm-inline-flex justify-content-end"
+        [ngClass]="{ show: isExpanded }"
+      >
+        <ul class="navbar-nav flex-grow">
+          <li class="nav-item"
+              [routerLinkActive]="['link-active']"
+              [routerLinkActiveOptions]="{ exact: true }">
+            <a class="nav-link text-dark"  href="#" [routerLink]="['/']">Inicio</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/Usuarios']">Usuarios</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/Clientes']">Clientes</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/Productos']">Productos</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/Contactos']">Contacto</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/Cotizaciones']">Cotizaciones</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/Ejecucion']">Ejecucion</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/Registro-Casos']">Registro de Casos</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
