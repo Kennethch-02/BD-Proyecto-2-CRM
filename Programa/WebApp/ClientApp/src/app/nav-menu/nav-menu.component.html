@@ -3,39 +3,20 @@
     class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-primary border-bottom box-shadow mb-3"
   >
     <div class="container">
-      <a class="navbar-brand" [routerLink]="['/']">Proyecto #1 CRM</a>
-      <div
-        class="navbar-collapse collapse d-sm-inline-flex justify-content-end"
-        [ngClass]="{ show: isExpanded }"
-      >
-        <ul class="navbar-nav flex-grow">
-          <li class="nav-item"
-              [routerLinkActive]="['link-active']"
-              [routerLinkActiveOptions]="{ exact: true }">
-            <a class="nav-link text-dark"  href="#" [routerLink]="['/']">Inicio</a>
-          </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/Usuarios']">Usuarios</a>
-          </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/Clientes']">Clientes</a>
-          </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/Productos']">Productos</a>
-          </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/Contactos']">Contacto</a>
-          </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/Cotizaciones']">Cotizaciones</a>
-          </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/Ejecucion']">Ejecucion</a>
-          </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/Registro-Casos']">Registro de Casos</a>
-          </li>
-        </ul>
+      <a class="navbar-brand">Proyecto #1 CRM</a>
+      <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end"
+           [ngClass]="{ show: isExpanded }">
+        <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+          <mat-button-toggle href="#" [routerLink]="['/']">Inicio</mat-button-toggle>
+          <mat-divider></mat-divider>
+          <mat-button-toggle [routerLink]="['/Usuarios']">Usuarios</mat-button-toggle>
+          <mat-button-toggle [routerLink]="['/Clientes']">Clientes</mat-button-toggle>
+          <mat-button-toggle [routerLink]="['/Productos']">Productos</mat-button-toggle>
+          <mat-button-toggle [routerLink]="['/Contactos']">Contacto</mat-button-toggle>
+          <mat-button-toggle [routerLink]="['/Cotizaciones']">Cotizaciones</mat-button-toggle>
+          <mat-button-toggle [routerLink]="['/Ejecucion']">Ejecucion</mat-button-toggle>
+          <mat-button-toggle [routerLink]="['/Registro-Casos']">Registro de Casos</mat-button-toggle>
+        </mat-button-toggle-group>
       </div>
     </div>
   </nav>

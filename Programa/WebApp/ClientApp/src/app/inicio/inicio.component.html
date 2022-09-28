@@ -1,7 +1,55 @@
-<h1>Funcionalidad de un CRM</h1>
-<p>El sistema deberá disponer de un módulo para manejo de usuarios, donde se podrá crear usuarios,
-  modificar la información de los usuarios, crear roles de usuarios, asignación de roles a usuarios,
-  definir la visibilidad y acceso de las opciones y funcionalidades del sistema por roles de usuarios
-  (por módulo tres opciones: edición, visualización y reportería). La información de usuario será nombre
-  de usuario, cédula, apellidos, departamento y clave (encriptada).El sistema debe permitir controlar el
-  acceso de las funcionalidades a partir de los permisos asignados a los usuarios.</p>
+<mat-card>
+  <mat-card-title>Funcionalidad de un CRM</mat-card-title>
+  <mat-card-content>
+    <mat-card>
+      El sistema deberá disponer de un módulo para manejo de usuarios, donde se podrá crear usuarios,
+      modificar la información de los usuarios, crear roles de usuarios, asignación de roles a usuarios,
+      definir la visibilidad y acceso de las opciones y funcionalidades del sistema por roles de usuarios
+      (por módulo tres opciones: edición, visualización y reportería). La información de usuario será nombre
+      de usuario, cédula, apellidos, departamento y clave (encriptada).El sistema debe permitir controlar el
+      acceso de las funcionalidades a partir de los permisos asignados a los usuarios.
+    </mat-card>
+    <mat-card>
+      El sistema deberá disponer de un módulo de productos para registrar, editar, eliminar (validar restricciones),
+      visualizar y generar reportes de la información de los productos (que han sido cotizados). El módulo de productos
+      debe disponer de la funcionalidad de dar mantenimiento (agregar, modificar, eliminar y visualizar) a las familias
+      de productos (tipo producto). El módulo de
+      productos debe disponer de la funcionalidad de reportes de productos, como por ejemplo: productos más cotizados,
+      productos más vendidos, familias de productos más cotizados, familias de productos más cotizados. La información de
+      las familias sería: Nombre de familia de producto, código de familia de producto, activo o no (hace un encadenamiento
+      con los productos asociados), descripción de familia de producto, entre otros. La información de los productos sería:
+      nombre del producto, código de producto, activo o no, descripción del producto, familia de producto, precio estándar,
+      entre otros.
+    </mat-card>
+    <mat-card>
+      El sistema deberá disponer de un módulo de clientes para registrar, editar, eliminar (validar restricciones), visualizar y generar reportes de la información de los clientes. La información de los clientes sería: Nombre de la cuenta, Correo electrónico, Contacto principal, Moneda de la cuenta, Teléfono, Celular, Sitio web, Información adicional, Asesor (usuario), Zona, Sector, entre otros. El módulo de clientes debe disponer de la funcionalidad de reportes de clientes, como por ejemplo: clientes por sector, clientes por zona, cotizaciones por clientes, montos cotizados, entre otros.
+    </mat-card>
+    <mat-card>
+      El sistema deberá contener un módulo de contacto (acercamiento-prospección-oportunidad) de clientes que permita registrar un contacto, editarlo, consultarlo, asociarle actividades, asociarle tareas a los registros de contacto de clientes, visualizar y generar reportes de la información de contacto. La información del contacto sería: Cliente, Tipo contacto, Motivo del contacto, Nombre, Teléfono, Correo electrónico, Estado de contacto, Dirección, Sector, Zona, Asesor, Descripción, entre otros. El módulo de contacto de clientes debe disponer en la pantalla de edición la funcionalidad de asignar y dar mantenimiento de tareas a usuarios, relacionada a un contacto de cliente, solicitando la información de la tarea, fecha de finalización, debería tener un estado de tarea y un usuario asignado. El módulo de contacto de clientes debe disponer en la pantalla de edición la funcionalidad de registrar una actividad relacionada al seguimiento de cliente con una descripción asociada a un usuario. El módulo de seguimiento de clientes debe disponer de la funcionalidad para crear reportes que permitan seleccionar los campos almacenados de seguimientos de clientes a desplegar y los campos de filtros.
+    </mat-card>
+    <mat-card>
+      El sistema deberá contener un módulo de cotizaciones que permita registrar una cotización, editarla, asociarle actividades (similar al contacto de cliente), asociarle tareas (similar al contacto de cliente) a los registros de cotización, visualizar y generar reportes de la información de cotizaciones. La información de la cotización sería: # Cotización, nombre de la oportunidad, fecha de la cotización, nombre de la cuenta, Mes-Año Proyectado de Cierre, asesor para la cotización, fecha de cierre, etapa, moneda de la oportunidad, probabilidad (%), orden de compra, tipo de cotización, descripción, zona, sector, # contacto asociada, factura #, ¿por qué se denegó?, ¿contra quién?, entre otros. Además, asignar productos con la siguiente información: Código de producto, cantidad.
+      Adicionalmente, el módulo de cotizaciones tendrá una funcionalidad de calcular el valor presente del histórico de cotizaciones al año actual, para esto, se deberá llevar registro del porcentaje de inflaciones anuales y un proceso de actualice, según las inflaciones acumuladas, los montos cotizados al tiempo actual (se profundizará en el proyecto 2).
+    </mat-card>
+    <mat-card>
+      El sistema deberá contener un módulo de ejecución (de proyecto asociado a una cotización) que permita administrar el proceso de ejecución, editarlo, asociarle actividades (similar al contacto de cliente), asociarle tareas (similar al contacto de cliente) a los registros de ejecución, visualizar y generar reportes de la información de ejecuciones. La información de la ejecución sería: Departamento, # Cotización, propietario de la ejecución, Nombre de la ejecución, Fecha de la ejecución, Nombre de la cuenta, Mes-Año Proyectado de Cierre, asesor, Fecha de cierre.
+    </mat-card>
+    <mat-card>
+      El sistema deberá contener un módulo de registro de casos que permita registrar un caso, editarlo, asociarle actividades, asociarle tareas a los registros de casos, visualizar y generar reportes de la información de cotizaciones. La información del caso sería: propietario del caso, origen del caso, nombre de la cuenta, # proyecto asociado, nombre del contacto, asunto, dirección, descripción, estado, Tipo de caso, prioridad, entre otros.
+    </mat-card>
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>Requerimientos a desarrollar</mat-card-title>
+  <mat-card-content>
+    <mat-selection-list role="list">
+      <mat-list-option role="listitem">Investigación exhaustiva de las diferentes funcionalidades y a aclarar todas las dudas en conjunto con el profesor.</mat-list-option>
+      <mat-list-option role="listitem">Diagrama Entidad-Relación, según la funcionalidad indicada del CRM.</mat-list-option>
+      <mat-list-option role="listitem">Diseño de la base de datos: script de creación de todos los objetos, relaciones, restricciones y demás elementos que componen la base de datos, según la funcionalidad indicada del CRM. Utilizar SQL Server para la creación del script.</mat-list-option>
+      <mat-list-option role="listitem">Diccionario de base de datos: entregar en la documentación externa. Investigar formato</mat-list-option>
+      <mat-list-option role="listitem">Diagrama relacional de la base de datos.</mat-list-option>
+      <mat-list-option role="listitem">Diseño de prototipos de la aplicación (.net): diseño de las pantallas que tendrá el sistema (agregar modificar, eliminar y listar) según las funcionalidades descritas. Al menos algunas funcionalidades.</mat-list-option>
+      <mat-list-option role="listitem">Para cada entidad u objeto (tabla) se debe disponer de funcionalidad para agregar, eliminar, actualizar y consultarlos con al menos un filtro (catálogos). Deseable no requerido.</mat-list-option>
+    </mat-selection-list>
+  </mat-card-content>
+</mat-card>
