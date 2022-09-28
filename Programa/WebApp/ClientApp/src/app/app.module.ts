@@ -14,6 +14,7 @@ import { InicioComponent } from './inicio/inicio.component';
 import { ProductosComponent } from './productos/productos.component';
 import { RegistroCasosComponent } from './registro-casos/registro-casos.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +42,8 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
       { path: 'Productos', component: ProductosComponent },
       { path: 'Registro-Casos', component: RegistroCasosComponent },
       { path: 'Usuarios', component: UsuariosComponent },
-    ])
+    ]),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
