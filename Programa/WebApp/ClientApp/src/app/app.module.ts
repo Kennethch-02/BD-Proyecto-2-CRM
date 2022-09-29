@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { ClientesComponent } from './clientes/clientes.component';
@@ -13,6 +14,8 @@ import { InicioComponent } from './inicio/inicio.component';
 import { ProductosComponent } from './productos/productos.component';
 import { RegistroCasosComponent } from './registro-casos/registro-casos.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { FilaUserComponent } from './fila-user/fila-user.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { A11yModule } from '@angular/cdk/a11y';
 import { ClipboardModule } from '@angular/cdk/clipboard';
@@ -68,6 +71,7 @@ import { MatTreeModule } from '@angular/material/tree';
     InicioComponent,
     ProductosComponent,
     RegistroCasosComponent,
+    FilaUserComponent,
     UsuariosComponent
   ],
   imports: [

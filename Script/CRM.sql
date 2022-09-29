@@ -2,6 +2,7 @@
 IF not exists (SELECT [name] FROM sys.databases WHERE [name] = N'SistemaCRM')
 BEGIN
 	CREATE DATABASE SistemaCRM;
+	USE SistemaCRM;
 	CREATE TABLE Usuario(
 		cedula varchar(10) primary key,
 		nombre varchar(20),
@@ -108,6 +109,7 @@ BEGIN
 		conraQuien varchar(20)
 	);
 END;
-
 USE SistemaCRM;
+-- Continuacion del codigo de trabajo --
+
 
