@@ -1,30 +1,150 @@
-<h1>Datos Cargados</h1>
+<div class="header">
+  <h1 class="headerElement">Datos Cargados</h1>
+  <button mat-button (click)="ShowData()">
+    <mat-icon *ngIf="!showData">arrow_drop_down_circle</mat-icon>
+    <mat-icon *ngIf="showData">arrow_drop_up_circle</mat-icon>
+  </button>
+  <button mat-button (click)="reloadPage()">
+    <mat-icon *ngIf="showData">refresh</mat-icon>
+  </button>
+</div>
 
-<table mat-table [dataSource]="listUsers" class="mat-elevation-z8">
-  <ng-container matColumnDef="nombre">
-    <th mat-header-cell *matHeaderCellDef> Nombre </th>
-    <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
-  </ng-container>
-  <ng-container matColumnDef="apellidos">
-    <th mat-header-cell *matHeaderCellDef> Apellidos </th>
-    <td mat-cell *matCellDef="let element"> {{element.apellidos}} </td>
-  </ng-container>
-  <ng-container matColumnDef="cedula">
-    <th mat-header-cell *matHeaderCellDef> Cedula </th>
-    <td mat-cell *matCellDef="let element"> {{element.cedula}} </td>
-  </ng-container>
-  <ng-container matColumnDef="departamento">
-    <th mat-header-cell *matHeaderCellDef> Departamento </th>
-    <td mat-cell *matCellDef="let element"> {{element.departamento}} </td>
-  </ng-container>
-  <ng-container matColumnDef="clave">
-    <th mat-header-cell *matHeaderCellDef> Clave </th>
-    <td mat-cell *matCellDef="let element"> {{element.clave}} </td>
-  </ng-container>
-  <ng-container matColumnDef="rol">
-    <th mat-header-cell *matHeaderCellDef> Rol </th>
-    <td mat-cell *matCellDef="let element"> {{element.rol}} </td>
-  </ng-container>
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+<div *ngIf="showData" class="containerUser">
+  <table mat-table [dataSource]="listUsers" class="mat-elevation-z8">
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef> Nombre </th>
+      <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+    </ng-container>
+    <ng-container matColumnDef="apellidos">
+      <th mat-header-cell *matHeaderCellDef> Apellidos </th>
+      <td mat-cell *matCellDef="let element"> {{element.apellidos}} </td>
+    </ng-container>
+    <ng-container matColumnDef="cedula">
+      <th mat-header-cell *matHeaderCellDef> Cedula </th>
+      <td mat-cell *matCellDef="let element"> {{element.cedula}} </td>
+    </ng-container>
+    <ng-container matColumnDef="departamento">
+      <th mat-header-cell *matHeaderCellDef> Departamento </th>
+      <td mat-cell *matCellDef="let element"> {{element.departamento}} </td>
+    </ng-container>
+    <ng-container matColumnDef="clave">
+      <th mat-header-cell *matHeaderCellDef> Clave </th>
+      <td mat-cell *matCellDef="let element"> {{element.clave}} </td>
+    </ng-container>
+    <ng-container matColumnDef="rol">
+      <th mat-header-cell *matHeaderCellDef> Rol </th>
+      <td mat-cell *matCellDef="let element"> {{element.rol}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+
+<div class="header">
+  <h1 class="headerElement">Agregar Datos</h1>
+  <button mat-button (click)="AddData()">
+    <mat-icon *ngIf="!addData">arrow_drop_down_circle</mat-icon>
+    <mat-icon *ngIf="addData">arrow_drop_up_circle</mat-icon>
+  </button>
+</div>
+
+<div *ngIf="addData" class="containerUser">
+  <form #forma="ngForm">
+    <label for="cedula"><b>Cedula</b></label>
+    <input type="number"
+           #cedula="ngModel"
+           [(ngModel)]="register.cedula"
+           placeholder="Introduzca su cedula"
+           name="cedula"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !cedula.invalid, 'is-invalid': cedula.invalid}" />
+    <div class="invalid-feedback" *ngIf="cedula.invalid && (cedula.dirty || cedula.touched)">
+      <div *ngIf="cedula.errors?.required">
+        Introduzca una cedula valida por favor
+      </div>
+    </div>
+
+    <label for="name"><b>Nombre</b></label>
+    <input type="text"
+           #name="ngModel"
+           [(ngModel)]="register.nombre"
+           placeholder="Introduzca su nombre"
+           name="name"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !name.invalid, 'is-invalid': name.invalid}" />
+    <div class="invalid-feedback" *ngIf="name.invalid && (name.dirty || name.touched)">
+      <div *ngIf="name.errors?.required">
+        Introduzca un nombre de pila válido por favor
+      </div>
+    </div>
+
+    <label for="apellido"><b>Apellido</b></label>
+    <input type="text"
+           #apellido="ngModel"
+           [(ngModel)]="register.apellidos"
+           placeholder="Introduzca su apellido"
+           name="apellido"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !apellido.invalid, 'is-invalid': apellido.invalid}" />
+    <div class="invalid-feedback" *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">
+      <div *ngIf="apellido.errors?.required">
+        Introduzca un apellido valido por favor
+      </div>
+    </div>
+
+    <label for="departamento"><b>Departamento</b></label>
+    <input type="text"
+           #departamento="ngModel"
+           [(ngModel)]="register.departamento"
+           placeholder="Introduzca su departamento"
+           name="departamento"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !departamento.invalid, 'is-invalid': departamento.invalid}" />
+    <div class="invalid-feedback" *ngIf="departamento.invalid && (departamento.dirty || departamento.touched)">
+      <div *ngIf="departamento.errors?.required">
+        Introduzca un departamento valido por favor
+      </div>
+    </div>
+
+    <label for="clave"><b>Clave</b></label>
+    <input type="password"
+           #clave="ngModel"
+           [(ngModel)]="register.clave"
+           placeholder="Introduzca su clave"
+           name="clave"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !clave.invalid, 'is-invalid': clave.invalid}" />
+    <div class="invalid-feedback" *ngIf="clave.invalid && (clave.dirty || clave.touched)">
+      <div *ngIf="clave.errors?.required">
+        Introduzca un clave valido por favor
+      </div>
+    </div>
+
+    <label for="rol"><b>Rol</b></label>
+    <input type="text"
+           #rol="ngModel"
+           [(ngModel)]="register.rol"
+           placeholder="Introduzca su rol"
+           name="rol"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !rol.invalid, 'is-invalid': rol.invalid}" />
+    <div class="invalid-feedback" *ngIf="rol.invalid && (rol.dirty || rol.touched)">
+      <div *ngIf="rol.errors?.required">
+        Introduzca un rol valido por favor
+      </div>
+    </div>
+
+
+
+    <div>
+      <button mat-button [disabled]="!forma.valid" (click)="submit()">Agregar Informacion</button>
+    </div>
+  </form>
+</div>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="true"><p style="color: white"> Loading... </p></ngx-spinner>

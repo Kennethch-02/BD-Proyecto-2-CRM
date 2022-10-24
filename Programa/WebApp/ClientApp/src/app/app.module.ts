@@ -16,7 +16,6 @@ import { RegistroCasosComponent } from './registro-casos/registro-casos.componen
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { FilaUserComponent } from './fila-user/fila-user.component';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { A11yModule } from '@angular/cdk/a11y';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { DragDropModule } from '@angular/cdk/drag-drop';
@@ -59,7 +58,10 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
+// Import library module
+import { NgxSpinnerModule } from "ngx-spinner";
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,6 +78,8 @@ import { MatTreeModule } from '@angular/material/tree';
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+    BrowserAnimationsModule,
+    NgxSpinnerModule,
     HttpClientModule,
     FormsModule,
     MatSliderModule,

@@ -1,3 +1,13 @@
 table {
   width: 100%;
 }
+.header {
+  display: flex;
+  align-items: flex-start;
+}
+.headerElement {
+    margin-left:10px;
+}
+.containerUser {
+    margin-bottom:50px;
+}
