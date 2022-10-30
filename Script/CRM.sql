@@ -7,38 +7,39 @@ END;
 -- DROP TABLES --
 
 use SistemaCRM
+
 go
 
-if OBJECT_id(N'ValorPresenteCotizaciones', N'U') IS NOT NULL
-	DROP table ValorPresenteCotizaciones
+if OBJECT_id(N'valorPresenteCotizaciones', N'U') IS NOT NULL
+	DROP table valorPresenteCotizaciones
 go
 
-if OBJECT_id(N'ActividadXCotizacion', N'U') IS NOT NULL
-	DROP table ActividadXCotizacion
+if OBJECT_id(N'actividadXcotizacion', N'U') IS NOT NULL
+	DROP table actividadXcotizacion
 go
 
-if OBJECT_id(N'TareaXCotizacion', N'U') IS NOT NULL
-	DROP table TareaXCotizacion
+if OBJECT_id(N'tareaXcotizacion', N'U') IS NOT NULL
+	DROP table tareaXcotizacion
 go
 
-if OBJECT_id(N'ProductoXCotizacion', N'U') IS NOT NULL
-	DROP table ProductoXCotizacion
+if OBJECT_id(N'productoXcotizacion', N'U') IS NOT NULL
+	DROP table productoXcotizacion
 go
 
-if OBJECT_id(N'ActividadesXEjecucion', N'U') IS NOT NULL
-	DROP table ActividadesXEjecucion
+if OBJECT_id(N'actividadXejecucion', N'U') IS NOT NULL
+	DROP table actividadXejecucion
 go
 
-if OBJECT_id(N'TareaXEjecucion', N'U') IS NOT NULL
-	DROP table TareaXEjecucion
+if OBJECT_id(N'tareaXejecucion', N'U') IS NOT NULL
+	DROP table tareaXejecucion
 go
 
-if OBJECT_id(N'PropietarioEjecucion', N'U') IS NOT NULL
-	DROP table PropietarioEjecucion
+if OBJECT_id(N'propietarioEjecucion', N'U') IS NOT NULL
+	DROP table propietarioEjecucion
 go
 
-if OBJECT_id(N'TareaXContacto', N'U') IS NOT NULL
-	DROP table TareaXContacto
+if OBJECT_id(N'tareaXcontacto', N'U') IS NOT NULL
+	DROP table tareaXcontacto
 go
 
 if OBJECT_id(N'cotizacionContraQuien', N'U') IS NOT NULL
@@ -97,16 +98,16 @@ if OBJECT_id(N'Departamento', N'U') IS NOT NULL
 	DROP table Departamento
 go
 
-if OBJECT_id(N'RolXOperaciones', N'U') IS NOT NULL
-	DROP table RolXOperaciones
+if OBJECT_id(N'rolXoperaciones', N'U') IS NOT NULL
+	DROP table rolXoperaciones
 go
 
 if OBJECT_id(N'Moneda', N'U') IS NOT NULL
 	DROP table Moneda
 go
 
-if OBJECT_id(N'ZonaSector', N'U') IS NOT NULL
-	DROP table ZonaSector
+if OBJECT_id(N'zonaSector', N'U') IS NOT NULL
+	DROP table zonaSector
 go
 
 if OBJECT_id(N'Actividad', N'U') IS NOT NULL
@@ -117,24 +118,24 @@ if OBJECT_id(N'Modulo', N'U') IS NOT NULL
 	DROP table Modulo
 go
 
-if OBJECT_id(N'TipoContacto', N'U') IS NOT NULL
-	DROP table TipoContacto
+if OBJECT_id(N'tipoContacto', N'U') IS NOT NULL
+	DROP table tipoContacto
 go
 
-if OBJECT_id(N'TipoCaso', N'U') IS NOT NULL
-	DROP table TipoCaso
+if OBJECT_id(N'tipoCaso', N'U') IS NOT NULL
+	DROP table tipoCaso
 go
 
 if OBJECT_id(N'Prioridad', N'U') IS NOT NULL
 	DROP table Prioridad
 go
 
-if OBJECT_id(N'EstadoCaso', N'U') IS NOT NULL
-	DROP table EstadoCaso
+if OBJECT_id(N'estadoCaso', N'U') IS NOT NULL
+	DROP table estadoCaso
 go
 
-if OBJECT_id(N'EstadoContacto', N'U') IS NOT NULL
-	DROP table EstadoContacto
+if OBJECT_id(N'estadoContacto', N'U') IS NOT NULL
+	DROP table estadoContacto
 go
 
 if OBJECT_id(N'Probabilidad', N'U') IS NOT NULL
@@ -149,8 +150,8 @@ if OBJECT_id(N'Etapa', N'U') IS NOT NULL
 	DROP table Etapa
 go
 
-if OBJECT_id(N'TipoCotizacion', N'U') IS NOT NULL
-	DROP table TipoCotizacion
+if OBJECT_id(N'tipoCotizacion', N'U') IS NOT NULL
+	DROP table tipoCotizacion
 go
 
 if OBJECT_id(N'nombreCuenta', N'U') IS NOT NULL
@@ -168,104 +169,104 @@ go
 create table Departamento(
 	id smallint not null primary key,
 	nombre varchar(15) not null
-)
+);
 
 CREATE TABLE Rol(
 	id smallint not null primary key,
 	tipo varchar(15) not null,
-)
+);
 
 create table Moneda(
 	id smallint not null primary key,
 	nombre varchar(15) not null
-)
+);
 
-create table ZonaSector(
+create table zonaSector(
 	id smallint not null primary key,
 	zona varchar(20) not null,
 	sector varchar(20) not null
-)
+);
 
 create table Actividad(
 	id smallint not null primary key,
 	descripcion varchar(50) not null,
 	fechaInicio date not null,
 	fechaFinal date not null
-)
+);
 
 -- Tipo de modulo --
 create table Modulo(
 	id smallint not null primary key,
 	tipo varchar(15) not null
-)
+);
 
 -- Tipo de contacto --
-create table TipoContacto(
+create table tipoContacto(
 	id smallint not null primary key,
 	tipo varchar(15) not null
-)
+);
 
 -- Tipo de caso --
-create table TipoCaso(
+create table tipoCaso(
 	id smallint not null primary key,
 	tipo varchar(15) not null
-)
+);
 
 -- Prioridad del caso --
 create table Prioridad(
 	id smallint not null primary  key,
 	prioridad varchar(10) not null
-)
+);
 
 -- Estado del caso --
-create table EstadoCaso(
+create table estadoCaso(
 	id smallint not null primary key,
 	estado varchar(10) not null
-)
+);
 
 
 -- Estado del contacto --
-create table EstadoContacto(
+create table estadoContacto(
 	id smallint not null primary key,
 	estado varchar(10) not null
-)
+);
 
 create table Probabilidad(
 	id smallint not null primary key,
 	porcentaje smallint not null,
-)
+);
 
 create table Operaciones(
 	id smallint not null primary key,
 	nombre varchar(20) not null,
 	modulo smallint not null foreign key references Modulo(id)
-)
+);
 
-create table RolXOperaciones(
+create table rolXoperaciones(
 	id smallint not null primary key,
 	rol smallint not null foreign key references Rol(id),
 	modulo smallint not null foreign key references Operaciones(id)
-)
+);
 
 create table Etapa(
 	id smallint not null primary key,
 	etapa varchar(15) not null,
-)
+);
 
-create table TipoCotizacion(
+create table tipoCotizacion(
 	id smallint not null primary key,
 	tipo varchar(20) not null
-)
+);
 
 create table nombreCuenta(
 	id smallint not null primary key,
 	nombre varchar(20) not null
-)
+);
 
 create table Inflacion(
 	id smallint not null primary key,
 	porcentaje int not null check (porcentaje between 0 and 100)
-)
+);
 
 CREATE TABLE Usuario(
 	cedula varchar(10) not null primary key,
@@ -274,12 +275,12 @@ CREATE TABLE Usuario(
 	departamento smallint not null foreign key references Departamento(id),
 	clave varchar(10) not null,
 	rol smallint not null foreign key references Rol(id)
-)
+);
 
 create table Asesor(
 	id smallint not null primary key,
 	cedula varchar(10) not null foreign key references Usuario(cedula),
-)
+);
 
 CREATE TABLE Cliente(
 	nombreDeUsuario varchar(20) not null primary key,
@@ -291,29 +292,29 @@ CREATE TABLE Cliente(
 	sitioWeb varchar(30) not null,
 	infoAdicional varchar(200),
 	asesor varchar(10) not null foreign key references Usuario(cedula),
-	zonaSector smallint not null foreign key references ZonaSector(id)
-)
+	zonaSector smallint not null foreign key references zonaSector(id)
+);
 
 CREATE TABLE Contacto(
 	cliente varchar(20) not null foreign key references Cliente(nombreDeUsuario),
-	tipo smallint not null foreign key references TipoContacto(id),
+	tipo smallint not null foreign key references tipoContacto(id),
 	motivo varchar(30) not null,
 	nombre varchar(20) not null primary key,
 	telefono varchar(15) not null,
 	correoElectronico varchar(30) not null,
-	estado smallint not null foreign key references EstadoContacto(id),
+	estado smallint not null foreign key references estadoContacto(id),
 	direccion varchar(20) not null,
-	zonaSector smallint not null foreign key references ZonaSector(id),
+	zonaSector smallint not null foreign key references zonaSector(id),
 	asesor smallint not null foreign key references Asesor(id),
 	descripcion varchar(50) not null,
 	idModulo smallint not null foreign key references Modulo(id)
-)
+);
 
 CREATE TABLE Familia(
 	codigo varchar(10) not null primary key,
 	nombre varchar(20) not null,
 	descripcion varchar(50) not null
-)
+);
 
 CREATE TABLE Producto(
 	codigo varchar(10) not null primary key,
@@ -322,7 +323,7 @@ CREATE TABLE Producto(
 	descripcion varchar(50) not null,
 	familia varchar(10) not null foreign key references Familia(codigo),
 	precioEstandar decimal(9,2) not null	
-)
+);
 
 CREATE TABLE Caso(
 	propietario varchar(20) not null foreign key references Cliente(nombreDeUsuario),
@@ -333,14 +334,14 @@ CREATE TABLE Caso(
 	asunto varchar(20) not null,
 	direccion varchar(30) not null,
 	descripcion varchar(50) not null,
-	estado smallint not null foreign key references EstadoCaso(id),
-	tipo smallint not null foreign key references TipoCaso(id),
+	estado smallint not null foreign key references estadoCaso(id),
+	tipo smallint not null foreign key references tipoCaso(id),
 	prioridad smallint not null foreign key references Prioridad(id),
-)
+);
 create table cotizacionEstado(
 	id smallint not null primary key,
 	razon varchar(30) not null,
-)
+);
 CREATE TABLE Cotizacion(
 	numero varchar(6) not null primary key,
 	nombreOportunidad varchar(15) not null,
@@ -353,36 +354,36 @@ CREATE TABLE Cotizacion(
 	moneda smallint not null foreign key references Moneda(id),
 	probabilidad smallint not null foreign key references Probabilidad(id),
 	ordenCompra varchar(6) not null,
-	tipo smallint not null foreign key references TipoCotizacion(id),
+	tipo smallint not null foreign key references tipoCotizacion(id),
 	descripcion varchar(50) not null,
-	zonaSector smallint not null foreign key references ZonaSector(id),
+	zonaSector smallint not null foreign key references zonaSector(id),
 	contacto varchar(20) not null foreign key references Contacto(nombre),
 	numeroFactura varchar(10) not null,
 	estado smallint not null foreign key references cotizacionEstado(id),
 	inflacion smallint not null foreign key references Inflacion(id)
-)
-create table PropietarioEjecucion(
+);
+create table propietarioEjecucion(
 	id smallint not null primary key,
 	nombre varchar(20) not null
-)
+);
 CREATE TABLE Ejecucion(
 	id smallint not null primary key,
 	departamento smallint not null foreign key references Departamento(id),
 	numeroCotizacion varchar(6) not null foreign key references Cotizacion(numero),
-	propietario smallint not null foreign key references PropietarioEjecucion(id),
+	propietario smallint not null foreign key references propietarioEjecucion(id),
 	nombre varchar(20) not null,
 	fecha date not null,
 	nombreDeCuenta varchar(20) not null foreign key references Cliente(nombreDeUsuario),
 	mesAnnoProyectadoCierre varchar(7) not null,
 	asesor varchar(10) foreign key references Usuario(cedula),
 	fechaCierre date not null
-)
+);
 
 
 create table cotizacionContraQuien(
 	id smallint not null primary key,
 	nombre varchar(20) not null foreign key references Cliente(nombreDeUsuario)
-)
+);
 
 create table Tarea(
 	id smallint not null primary key,
@@ -390,49 +391,49 @@ create table Tarea(
 	fechaCreacion date not null,
 	fechaFinal date not null,
 	info varchar(30) not null
-)
+);
 
-create table TareaXContacto(
+create table tareaXcontacto(
 	contacto varchar(20) not null foreign key references Contacto(nombre),
 	tarea smallint  not null foreign key references Tarea(id),
 	primary key(contacto, tarea)
-)
+);
 
 
 
-create table TareaXEjecucion(
+create table tareaXejecucion(
     ejecucion smallint not null foreign key references Ejecucion (id), 
 	tarea smallint not null foreign key references Tarea(id),
 	primary key(ejecucion,tarea)
-)
+);
 
-create table ActividadesXEjecucion(
+create table actividadXejecucion(
     ejecucion smallint not null foreign key references Ejecucion (id), 
 	actividad smallint not null foreign key references Actividad(id),
 	primary key(ejecucion,actividad)
-)
+);
 
-create table ProductoXCotizacion(
+create table productoXcotizacion(
 	codigoProducto varchar(10) not null foreign key references Producto(codigo),
 	cantidad int not null,
 	precioNegociado decimal(9,2) not null,
 	cotizacion varchar(6) not null foreign key references Cotizacion(numero),
 	primary key(codigoProducto, cotizacion)
-)
+);
 
-create table TareaXCotizacion(
+create table tareaXcotizacion(
 	numeroCotizacion varchar(6) not null foreign key references Cotizacion(numero),
 	tarea smallint not null foreign key references Tarea(id)
 	primary key(numeroCotizacion, tarea)
-)
+);
 
-create table ActividadXCotizacion(
+create table actividadXcotizacion(
 	numeroCotizacion varchar(6) not null foreign key references Cotizacion(numero),
 	actividad smallint not null foreign key references Actividad(id)
 	primary key(numeroCotizacion, actividad)
-)
+);
 
-create table ValorPresenteCotizaciones(
+create table valorPresenteCotizaciones(
 	nombreOportunidad varchar(15) not null,
 	fechaCotizacion date not null,
 	totalCotizacion decimal(9,2) not null,
@@ -440,5 +441,54 @@ create table ValorPresenteCotizaciones(
 	numeroCotizacion varchar(6) not null foreign key references Cotizacion(numero),
 	nombreContacto varchar(20) not null foreign key references Contacto(nombre),
 	nombreCuenta varchar(20) not null foreign key references Cliente(nombreDeUsuario),
-)
+);
+GO
 
+--Procedimientos Almacenados
+--- EJEMPLOOO
+CREATE PROCEDURE uspCalcVelocity
+                 @distance float,
+                 @time float,
+                 @velocity float OUTPUT
+AS
+IF (@time = 0.00)
+BEGIN
+   -- we can't divide by zero, so assume time is 1 hour
+   Select @time = 1;
+   SELECT @velocity = @distance / @time;
+END
+IF (@time = 1.00)
+BEGIN
+   -- we can't divide by zero, so assume time is 1 hour
+   Select @time = 1;
+   SELECT @velocity = @distance / @time;
+END
+ELSE
+BEGIN
+   SELECT @velocity = @distance / @time;   
+END
+GO
+
+-- DESARROLLO
+CREATE PROC UsuarioProc
+				@cedula varchar(10),
+				@nombre varchar(20),
+				@apellidos varchar(40),
+				@departamento smallint,
+				@clave varchar(10),
+				@rol smallint,
+				@modo CHAR(1)
+AS
+if (@modo='I')
+BEGIN
+	INSERT Usuario VALUES (@cedula,@nombre,@apellidos,@departamento,@clave,@rol)
+END
+if (@modo='U')
+BEGIN
+	UPDATE Usuario SET cedula=@cedula,nombre=@nombre,apellidos=@apellidos,departamento=@departamento,clave=@clave,rol=@rol WHERE cedula = @cedula
+END
+if (@modo='D')
+BEGIN
+	DELETE FROM Usuario WHERE cedula = @cedula
+END
+GO
