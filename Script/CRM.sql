@@ -9,159 +9,159 @@ END;
 use SistemaCRM
 go
 
-if OBJECT_ID(N'ValorPresenteCotizaciones', N'U') IS NOT NULL
+if OBJECT_id(N'ValorPresenteCotizaciones', N'U') IS NOT NULL
 	DROP table ValorPresenteCotizaciones
 go
 
-if OBJECT_ID(N'ActividadXCotizacion', N'U') IS NOT NULL
+if OBJECT_id(N'ActividadXCotizacion', N'U') IS NOT NULL
 	DROP table ActividadXCotizacion
 go
 
-if OBJECT_ID(N'TareaXCotizacion', N'U') IS NOT NULL
+if OBJECT_id(N'TareaXCotizacion', N'U') IS NOT NULL
 	DROP table TareaXCotizacion
 go
 
-if OBJECT_ID(N'ProductoXCotizacion', N'U') IS NOT NULL
+if OBJECT_id(N'ProductoXCotizacion', N'U') IS NOT NULL
 	DROP table ProductoXCotizacion
 go
 
-if OBJECT_ID(N'ActividadesXEjecucion', N'U') IS NOT NULL
+if OBJECT_id(N'ActividadesXEjecucion', N'U') IS NOT NULL
 	DROP table ActividadesXEjecucion
 go
 
-if OBJECT_ID(N'TareaXEjecucion', N'U') IS NOT NULL
+if OBJECT_id(N'TareaXEjecucion', N'U') IS NOT NULL
 	DROP table TareaXEjecucion
 go
 
-if OBJECT_ID(N'PropietarioEjecucion', N'U') IS NOT NULL
+if OBJECT_id(N'PropietarioEjecucion', N'U') IS NOT NULL
 	DROP table PropietarioEjecucion
 go
 
-if OBJECT_ID(N'TareaXContacto', N'U') IS NOT NULL
+if OBJECT_id(N'TareaXContacto', N'U') IS NOT NULL
 	DROP table TareaXContacto
 go
 
-if OBJECT_ID(N'cotizacionContraQuien', N'U') IS NOT NULL
+if OBJECT_id(N'cotizacionContraQuien', N'U') IS NOT NULL
 	DROP table cotizacionContraQuien
 go
 
-if OBJECT_ID(N'cotizacionDenegada', N'U') IS NOT NULL
-	DROP table cotizacionDenegada
+if OBJECT_id(N'cotizacionEstado', N'U') IS NOT NULL
+	DROP table cotizacionEstado
 go
 
-if OBJECT_ID(N'Tarea', N'U') IS NOT NULL
+if OBJECT_id(N'Tarea', N'U') IS NOT NULL
 	DROP table Tarea
 go
 
-if OBJECT_ID(N'Ejecucion', N'U') IS NOT NULL
+if OBJECT_id(N'Ejecucion', N'U') IS NOT NULL
 	DROP table Ejecucion
 go
 
-if OBJECT_ID(N'Cotizacion', N'U') IS NOT NULL
+if OBJECT_id(N'Cotizacion', N'U') IS NOT NULL
 	DROP table Cotizacion
 go
 
-if OBJECT_ID(N'Caso', N'U') IS NOT NULL
+if OBJECT_id(N'Caso', N'U') IS NOT NULL
 	DROP table Caso
 go
 
-if OBJECT_ID(N'Producto', N'U') IS NOT NULL
+if OBJECT_id(N'Producto', N'U') IS NOT NULL
 	DROP table Producto
 go
 
-if OBJECT_ID(N'Familia', N'U') IS NOT NULL
+if OBJECT_id(N'Familia', N'U') IS NOT NULL
 	DROP table Familia
 go
 
-if OBJECT_ID(N'Producto', N'U') IS NOT NULL
+if OBJECT_id(N'Producto', N'U') IS NOT NULL
 	DROP table Producto
 go
 
-if OBJECT_ID(N'Contacto', N'U') IS NOT NULL
+if OBJECT_id(N'Contacto', N'U') IS NOT NULL
 	DROP table Contacto
 go
 
-if OBJECT_ID(N'Cliente', N'U') IS NOT NULL
+if OBJECT_id(N'Cliente', N'U') IS NOT NULL
 	DROP table Cliente
 go
 
-if OBJECT_ID(N'Asesor', N'U') IS NOT NULL
+if OBJECT_id(N'Asesor', N'U') IS NOT NULL
 	DROP table Asesor
 go
 
-if OBJECT_ID(N'Usuario', N'U') IS NOT NULL
+if OBJECT_id(N'Usuario', N'U') IS NOT NULL
 	DROP table Usuario
 go
 
-if OBJECT_ID(N'Departamento', N'U') IS NOT NULL
+if OBJECT_id(N'Departamento', N'U') IS NOT NULL
 	DROP table Departamento
 go
 
-if OBJECT_ID(N'RolXOperaciones', N'U') IS NOT NULL
+if OBJECT_id(N'RolXOperaciones', N'U') IS NOT NULL
 	DROP table RolXOperaciones
 go
 
-if OBJECT_ID(N'Moneda', N'U') IS NOT NULL
+if OBJECT_id(N'Moneda', N'U') IS NOT NULL
 	DROP table Moneda
 go
 
-if OBJECT_ID(N'ZonaSector', N'U') IS NOT NULL
+if OBJECT_id(N'ZonaSector', N'U') IS NOT NULL
 	DROP table ZonaSector
 go
 
-if OBJECT_ID(N'Actividad', N'U') IS NOT NULL
+if OBJECT_id(N'Actividad', N'U') IS NOT NULL
 	DROP table Actividad
 go
 
-if OBJECT_ID(N'Modulo', N'U') IS NOT NULL
+if OBJECT_id(N'Modulo', N'U') IS NOT NULL
 	DROP table Modulo
 go
 
-if OBJECT_ID(N'TipoContacto', N'U') IS NOT NULL
+if OBJECT_id(N'TipoContacto', N'U') IS NOT NULL
 	DROP table TipoContacto
 go
 
-if OBJECT_ID(N'TipoCaso', N'U') IS NOT NULL
+if OBJECT_id(N'TipoCaso', N'U') IS NOT NULL
 	DROP table TipoCaso
 go
 
-if OBJECT_ID(N'Prioridad', N'U') IS NOT NULL
+if OBJECT_id(N'Prioridad', N'U') IS NOT NULL
 	DROP table Prioridad
 go
 
-if OBJECT_ID(N'EstadoCaso', N'U') IS NOT NULL
+if OBJECT_id(N'EstadoCaso', N'U') IS NOT NULL
 	DROP table EstadoCaso
 go
 
-if OBJECT_ID(N'EstadoContacto', N'U') IS NOT NULL
+if OBJECT_id(N'EstadoContacto', N'U') IS NOT NULL
 	DROP table EstadoContacto
 go
 
-if OBJECT_ID(N'Probabilidad', N'U') IS NOT NULL
+if OBJECT_id(N'Probabilidad', N'U') IS NOT NULL
 	DROP table Probabilidad
 go
 
-if OBJECT_ID(N'Operaciones', N'U') IS NOT NULL
+if OBJECT_id(N'Operaciones', N'U') IS NOT NULL
 	DROP table Operaciones
 go
 
-if OBJECT_ID(N'Etapa', N'U') IS NOT NULL
+if OBJECT_id(N'Etapa', N'U') IS NOT NULL
 	DROP table Etapa
 go
 
-if OBJECT_ID(N'TipoCotizacion', N'U') IS NOT NULL
+if OBJECT_id(N'TipoCotizacion', N'U') IS NOT NULL
 	DROP table TipoCotizacion
 go
 
-if OBJECT_ID(N'nombreCuenta', N'U') IS NOT NULL
+if OBJECT_id(N'nombreCuenta', N'U') IS NOT NULL
 	DROP table nombreCuenta
 go
 
-if OBJECT_ID(N'Inflacion', N'U') IS NOT NULL
+if OBJECT_id(N'Inflacion', N'U') IS NOT NULL
 	DROP table Inflacion
 go
 
-if OBJECT_ID(N'Rol', N'U') IS NOT NULL
+if OBJECT_id(N'Rol', N'U') IS NOT NULL
 	DROP table Rol
 go
 
@@ -248,12 +248,12 @@ create table RolXOperaciones(
 )
 
 create table Etapa(
-	ID smallint not null primary key,
+	id smallint not null primary key,
 	etapa varchar(15) not null,
 )
 
 create table TipoCotizacion(
-	ID smallint not null primary key,
+	id smallint not null primary key,
 	tipo varchar(20) not null
 )
 
@@ -327,7 +327,7 @@ CREATE TABLE Producto(
 CREATE TABLE Caso(
 	propietario varchar(20) not null foreign key references Cliente(nombreDeUsuario),
 	origen varchar(15) not null,
-	nombreDeCuenta varchar(20) not null foreign key references Cliente(nombreDeUsuario),
+	nombreDeCuenta smallint not null foreign key references nombreCuenta(id),
 	numeroProyecto varchar(15) not null primary key,
 	nombreContacto varchar(20) not null foreign key references Contacto(nombre),
 	asunto varchar(20) not null,
@@ -337,32 +337,39 @@ CREATE TABLE Caso(
 	tipo smallint not null foreign key references TipoCaso(id),
 	prioridad smallint not null foreign key references Prioridad(id),
 )
-
+create table cotizacionEstado(
+	id smallint not null primary key,
+	razon varchar(30) not null,
+)
 CREATE TABLE Cotizacion(
 	numero varchar(6) not null primary key,
 	nombreOportunidad varchar(15) not null,
 	fecha date not null,
 	nombreCuenta varchar(20) not null foreign key references Cliente(nombreDeUsuario),
-	mesAnnoProyectado varchar(7) not null,
+	mesAñoProyectado varchar(7) not null,
 	asesor smallint not null foreign key references Asesor(id),
 	fechaCierre date not null,
-	etapa smallint not null foreign key references Etapa(ID),
+	etapa smallint not null foreign key references Etapa(id),
 	moneda smallint not null foreign key references Moneda(id),
 	probabilidad smallint not null foreign key references Probabilidad(id),
 	ordenCompra varchar(6) not null,
-	tipo smallint not null foreign key references TipoCotizacion(ID),
+	tipo smallint not null foreign key references TipoCotizacion(id),
 	descripcion varchar(50) not null,
 	zonaSector smallint not null foreign key references ZonaSector(id),
 	contacto varchar(20) not null foreign key references Contacto(nombre),
 	numeroFactura varchar(10) not null,
+	estado smallint not null foreign key references cotizacionEstado(id),
 	inflacion smallint not null foreign key references Inflacion(id)
 )
-
+create table PropietarioEjecucion(
+	id smallint not null primary key,
+	nombre varchar(20) not null
+)
 CREATE TABLE Ejecucion(
-	ID smallint not null primary key,
+	id smallint not null primary key,
 	departamento smallint not null foreign key references Departamento(id),
 	numeroCotizacion varchar(6) not null foreign key references Cotizacion(numero),
-	propietario varchar(20) not null,
+	propietario smallint not null foreign key references PropietarioEjecucion(id),
 	nombre varchar(20) not null,
 	fecha date not null,
 	nombreDeCuenta varchar(20) not null foreign key references Cliente(nombreDeUsuario),
@@ -371,10 +378,6 @@ CREATE TABLE Ejecucion(
 	fechaCierre date not null
 )
 
-create table cotizacionDenegada(
-	id smallint not null primary key,
-	razon varchar(30) not null,
-)
 
 create table cotizacionContraQuien(
 	id smallint not null primary key,
@@ -395,19 +398,16 @@ create table TareaXContacto(
 	primary key(contacto, tarea)
 )
 
-create table PropietarioEjecucion(
-	id smallint not null primary key,
-	nombre varchar(20) not null
-)
+
 
 create table TareaXEjecucion(
-    ejecucion smallint not null foreign key references Ejecucion (ID), 
+    ejecucion smallint not null foreign key references Ejecucion (id), 
 	tarea smallint not null foreign key references Tarea(id),
 	primary key(ejecucion,tarea)
 )
 
 create table ActividadesXEjecucion(
-    ejecucion smallint not null foreign key references Ejecucion (ID), 
+    ejecucion smallint not null foreign key references Ejecucion (id), 
 	actividad smallint not null foreign key references Actividad(id),
 	primary key(ejecucion,actividad)
 )
