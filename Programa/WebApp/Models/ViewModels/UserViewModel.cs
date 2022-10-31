@@ -8,8 +8,8 @@ namespace WebApp.Controllers.Models.ViewModels
         public string cedula { get; set; }
         public string nombre { get; set; }
         public string apellidos { get; set; }
-        public string departamento { get; set; }
+        public Int16 departamento { get; set; }
         public string clave { get; set; }
-        public string rol { get; set; }
+        public Int16 rol { get; set; }
     }
 }
