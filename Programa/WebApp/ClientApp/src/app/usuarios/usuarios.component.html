@@ -173,7 +173,7 @@
     </div>
   </form>
   <label style="margin-left: 40px; margin-top: 40px"><b>Roles</b></label>
-  <form #forma="ngForm">
+  <form #formaRol="ngForm">
     <label for="ID"><b>ID</b></label>
     <input type="number"
            #ID="ngModel"
@@ -203,11 +203,11 @@
       </div>
     </div>
     <div>
-      <button mat-button [disabled]="!forma.valid" (click)="submitRols()">Agregar Informacion</button>
+      <button mat-button [disabled]="!formaRol.valid" (click)="submitRols()">Agregar Informacion</button>
     </div>
   </form>
   <label style="margin-left: 40px; margin-top: 40px"><b>Departamentos</b></label>
-  <form #forma="ngForm">
+  <form #formaDept="ngForm">
     <label for="ID"><b>ID</b></label>
     <input type="number"
            #ID="ngModel"
@@ -237,7 +237,7 @@
       </div>
     </div>
     <div>
-      <button mat-button [disabled]="!forma.valid" (click)="submitDepts()">Agregar Informacion</button>
+      <button mat-button [disabled]="!formaDept.valid" (click)="submitDepts()">Agregar Informacion</button>
     </div>
   </form>
 </div>
