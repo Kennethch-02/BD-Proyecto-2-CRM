@@ -11,6 +11,7 @@ export class UsuariosComponent{
   public displayedColumns = ['nombre', 'apellidos', 'cedula', 'rol', 'clave', 'departamento'];
   public showData: boolean = false;
   public addData: boolean = false;
+  public haveData: boolean = false;
   register: Usuarios = {
     cedula: "",
     nombre: "",
@@ -24,6 +25,7 @@ export class UsuariosComponent{
     this.showSpinner()
     http.get<Usuarios[]>(baseUrl + "api/app/usuarios").subscribe(result => {
       this.listUsers = result;
+      this.haveData = true;
     }, error => console.error(error));
   }
   showSpinner() {
@@ -32,7 +34,7 @@ export class UsuariosComponent{
     
   }
   pauseSpinner() {
-    if (this.listUsers.length > 0) {
+    if (this.haveData) {
       this.spinner.hide();
     } else {
       setTimeout(() => {
