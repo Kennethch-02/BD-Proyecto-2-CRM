@@ -492,3 +492,41 @@ BEGIN
 	DELETE FROM Usuario WHERE cedula = @cedula
 END
 GO
+
+CREATE PROC RolProc
+				@id smallint,
+				@tipo varchar(15),
+				@modo char(1)
+AS
+if (@modo='I')
+BEGIN
+	INSERT Rol VALUES (@tipo)
+END
+if (@modo='U')
+BEGIN
+	UPDATE Rol SET tipo = @tipo WHERE id = @id
+END
+if (@modo='D')
+BEGIN
+	DELETE FROM Rol WHERE id = @id
+END
+GO
+
+CREATE PROC DepartamentoProc
+				@id smallint,
+				@nombre varchar(15),
+				@modo char(1)
+AS
+if (@modo='I')
+BEGIN
+	INSERT Departamento VALUES (@nombre)
+END
+if (@modo='U')
+BEGIN
+	UPDATE Departamento SET nombre = @nombre WHERE id = @id
+END
+if (@modo='D')
+BEGIN
+	DELETE FROM Departamento WHERE id = @id
+END
+GO

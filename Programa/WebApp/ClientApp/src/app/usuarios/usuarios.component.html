@@ -49,6 +49,7 @@
 </div>
 
 <div *ngIf="addData" class="containerUser">
+  <label style="margin-left:40px"><b>Datos del Usuario</b></label>
   <form #forma="ngForm">
     <label for="cedula"><b>Cedula</b></label>
     <input type="number"
@@ -124,7 +125,6 @@
         Introduzca un clave valido por favor
       </div>
     </div>
-
     <label for="rol"><b>Rol</b></label>
     <input type="text"
            #rol="ngModel"
@@ -139,9 +139,6 @@
         Introduzca un rol valido por favor
       </div>
     </div>
-
-
-
     <div>
       <button mat-button [disabled]="!forma.valid" (click)="submit()">Agregar Informacion</button>
     </div>

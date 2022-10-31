@@ -31,7 +31,6 @@ export class UsuariosComponent{
   showSpinner() {
     this.spinner.show();
     this.pauseSpinner()
-    
   }
   pauseSpinner() {
     if (this.haveData) {
