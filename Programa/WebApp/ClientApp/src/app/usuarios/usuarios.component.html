@@ -10,6 +10,7 @@
 </div>
 
 <div *ngIf="showData" class="containerUser">
+  <label style="margin-left:40px"><b>Usuarios</b></label>
   <table mat-table [dataSource]="listUsers" class="mat-elevation-z8">
     <ng-container matColumnDef="nombre">
       <th mat-header-cell *matHeaderCellDef> Nombre </th>
@@ -35,8 +36,36 @@
       <th mat-header-cell *matHeaderCellDef> Rol </th>
       <td mat-cell *matCellDef="let element"> {{element.rol}} </td>
     </ng-container>
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-header-row *matHeaderRowDef="columnsUser"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnsUser;"></tr>
+  </table>
+
+  <label style="margin-left:40px; margin-top:40px"><b>Roles</b></label>
+  <table mat-table [dataSource]="listRols" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+    <ng-container matColumnDef="tipo">
+      <th mat-header-cell *matHeaderCellDef> Tipo </th>
+      <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="columnsRols"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnsRols;"></tr>
+  </table>
+
+  <label style="margin-left:40px; margin-top:40px"><b>Departamentos</b></label>
+  <table mat-table [dataSource]="listDepts" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef> Nombre </th>
+      <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="columnsDepts"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnsDepts;"></tr>
   </table>
 </div>
 
@@ -49,12 +78,12 @@
 </div>
 
 <div *ngIf="addData" class="containerUser">
-  <label style="margin-left:40px"><b>Datos del Usuario</b></label>
+  <label style="margin-left:40px"><b>Usuarios</b></label>
   <form #forma="ngForm">
     <label for="cedula"><b>Cedula</b></label>
     <input type="number"
            #cedula="ngModel"
-           [(ngModel)]="register.cedula"
+           [(ngModel)]="registerUsers.cedula"
            placeholder="Introduzca su cedula"
            name="cedula"
            class="form-control"
@@ -69,7 +98,7 @@
     <label for="name"><b>Nombre</b></label>
     <input type="text"
            #name="ngModel"
-           [(ngModel)]="register.nombre"
+           [(ngModel)]="registerUsers.nombre"
            placeholder="Introduzca su nombre"
            name="name"
            class="form-control"
@@ -84,7 +113,7 @@
     <label for="apellido"><b>Apellido</b></label>
     <input type="text"
            #apellido="ngModel"
-           [(ngModel)]="register.apellidos"
+           [(ngModel)]="registerUsers.apellidos"
            placeholder="Introduzca su apellido"
            name="apellido"
            class="form-control"
@@ -97,9 +126,9 @@
     </div>
 
     <label for="departamento"><b>Departamento</b></label>
-    <input type="text"
+    <input type="number"
            #departamento="ngModel"
-           [(ngModel)]="register.departamento"
+           [(ngModel)]="registerUsers.departamento"
            placeholder="Introduzca su departamento"
            name="departamento"
            class="form-control"
@@ -114,7 +143,7 @@
     <label for="clave"><b>Clave</b></label>
     <input type="password"
            #clave="ngModel"
-           [(ngModel)]="register.clave"
+           [(ngModel)]="registerUsers.clave"
            placeholder="Introduzca su clave"
            name="clave"
            class="form-control"
@@ -126,9 +155,9 @@
       </div>
     </div>
     <label for="rol"><b>Rol</b></label>
-    <input type="text"
+    <input type="number"
            #rol="ngModel"
-           [(ngModel)]="register.rol"
+           [(ngModel)]="registerUsers.rol"
            placeholder="Introduzca su rol"
            name="rol"
            class="form-control"
@@ -140,7 +169,75 @@
       </div>
     </div>
     <div>
-      <button mat-button [disabled]="!forma.valid" (click)="submit()">Agregar Informacion</button>
+      <button mat-button [disabled]="!forma.valid" (click)="submitUsers()">Agregar Informacion</button>
+    </div>
+  </form>
+  <label style="margin-left: 40px; margin-top: 40px"><b>Roles</b></label>
+  <form #formaRol="ngForm">
+    <label for="ID"><b>ID</b></label>
+    <input type="number"
+           #ID="ngModel"
+           [(ngModel)]="registerRols.id"
+           placeholder="Introduzca su ID"
+           name="ID"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !ID.invalid, 'is-invalid': ID.invalid}" />
+    <div class="invalid-feedback" *ngIf="ID.invalid && (ID.dirty || ID.touched)">
+      <div *ngIf="ID.errors?.required">
+        Introduzca un ID valido por favor
+      </div>
+    </div>
+    <label for="tipo"><b>Tipo</b></label>
+    <input type="text"
+           #tipo="ngModel"
+           [(ngModel)]="registerRols.tipo"
+           placeholder="Introduzca su tipo"
+           tipo="tipo"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !tipo.invalid, 'is-invalid': tipo.invalid}" />
+    <div class="invalid-feedback" *ngIf="tipo.invalid && (tipo.dirty || tipo.touched)">
+      <div *ngIf="tipo.errors?.required">
+        Introduzca un tipo válido por favor
+      </div>
+    </div>
+    <div>
+      <button mat-button [disabled]="!formaRol.valid" (click)="submitRols()">Agregar Informacion</button>
+    </div>
+  </form>
+  <label style="margin-left: 40px; margin-top: 40px"><b>Departamentos</b></label>
+  <form #formaDept="ngForm">
+    <label for="ID"><b>ID</b></label>
+    <input type="number"
+           #ID="ngModel"
+           [(ngModel)]="registerDepts.id"
+           placeholder="Introduzca su ID"
+           name="ID"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !ID.invalid, 'is-invalid': ID.invalid}" />
+    <div class="invalid-feedback" *ngIf="ID.invalid && (ID.dirty || ID.touched)">
+      <div *ngIf="ID.errors?.required">
+        Introduzca un ID valido por favor
+      </div>
+    </div>
+    <label for="name"><b>Nombre</b></label>
+    <input type="text"
+           #name="ngModel"
+           [(ngModel)]="registerDepts.nombre"
+           placeholder="Introduzca su nombre"
+           name="name"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !name.invalid, 'is-invalid': name.invalid}" />
+    <div class="invalid-feedback" *ngIf="name.invalid && (name.dirty || name.touched)">
+      <div *ngIf="name.errors?.required">
+        Introduzca un name válido por favor
+      </div>
+    </div>
+    <div>
+      <button mat-button [disabled]="!formaDept.valid" (click)="submitDepts()">Agregar Informacion</button>
     </div>
   </form>
 </div>

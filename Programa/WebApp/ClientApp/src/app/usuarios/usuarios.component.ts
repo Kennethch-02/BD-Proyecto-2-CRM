@@ -8,24 +8,42 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class UsuariosComponent{
   public listUsers: Usuarios[] = [];
-  public displayedColumns = ['nombre', 'apellidos', 'cedula', 'rol', 'clave', 'departamento'];
+  public listRols: Rol[] = [];
+  public listDepts: Departamento[] = [];
+  public columnsUser = ['nombre', 'apellidos', 'cedula', 'rol', 'clave', 'departamento'];
+  public columnsRols = ['id', 'tipo'];
+  public columnsDepts = ['id', 'nombre'];
   public showData: boolean = false;
   public addData: boolean = false;
   public haveData: boolean = false;
-  register: Usuarios = {
+  registerUsers: Usuarios = {
     cedula: "",
     nombre: "",
     apellidos: "",
-    departamento: "",
+    departamento: 0,
     clave: "",
-    rol: ""
+    rol: 0
+  }
+  registerRols: Rol = {
+    id: 0,
+    tipo: ""
+  }
+  registerDepts: Departamento = {
+    id: 0,
+    nombre:""
+    
   }
   constructor(http: HttpClient, @Inject("BASE_URL") baseUrl: string, private spinner: NgxSpinnerService) {
-    console.log(this.listUsers);
     this.showSpinner()
     http.get<Usuarios[]>(baseUrl + "api/app/usuarios").subscribe(result => {
       this.listUsers = result;
       this.haveData = true;
+    }, error => console.error(error));
+    http.get<Rol[]>(baseUrl + "api/app/rol").subscribe(result => {
+      this.listRols = result;
+    }, error => console.error(error));
+    http.get<Departamento[]>(baseUrl + "api/app/departamento").subscribe(result => {
+      this.listDepts = result;
     }, error => console.error(error));
   }
   showSpinner() {
@@ -47,13 +65,14 @@ export class UsuariosComponent{
   public AddData() {
     this.addData = !this.addData;
   }
-  public submit() {
-    console.log(this.register.cedula)
-    console.log(this.register.nombre)
-    console.log(this.register.apellidos)
-    console.log(this.register.departamento)
-    console.log(this.register.clave)
-    console.log(this.register.rol)
+  public submitUsers() {
+
+  }
+  public submitRols() {
+
+  }
+  public submitDepts() {
+
   }
   public reloadPage() {
     window.location.reload();
@@ -63,7 +82,15 @@ interface Usuarios {
   cedula: string,
   nombre: string,
   apellidos: string,
-  departamento: string,
+  departamento: Number,
   clave: string,
-  rol:string
+  rol:Number
+}
+interface Rol {
+  id: Number,
+  tipo: string,
+}
+interface Departamento {
+  id: Number,
+  nombre: string,
 }

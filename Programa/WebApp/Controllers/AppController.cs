@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebApp.Controllers.Models.ViewModels;
+using WebApp.Models.ViewModels;
 
 namespace WebApp.Controllers
 {
@@ -23,6 +24,29 @@ namespace WebApp.Controllers
                                              rol = d.rol,
                                          }).ToList();
             return users;
+        }
+        [HttpGet("[action]")]
+        public IEnumerable<RolViewModel> Rol()
+        {
+            List<RolViewModel> rols = (from d in db.Rol
+                                         select new RolViewModel
+                                         {
+                                             id = d.id,
+                                             tipo = d.tipo,
+                                         }).ToList();
+            return rols;
+        }
+
+        [HttpGet("[action]")]
+        public IEnumerable<DepartamentoViewModel> Departamento()
+        {
+            List<DepartamentoViewModel> departamentos = (from d in db.Departamento
+                                       select new DepartamentoViewModel
+                                       {
+                                           id = d.id,
+                                           nombre = d.nombre,
+                                       }).ToList();
+            return departamentos;
         }
     }
 }
