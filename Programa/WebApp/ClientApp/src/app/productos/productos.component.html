@@ -1,1 +1,157 @@
-<p>productos works!</p>
+<div class="header">
+  <h1 class="headerElement">Datos Cargados</h1>
+  <button mat-button (click)="ShowData()">
+    <mat-icon *ngIf="!showData">arrow_drop_down_circle</mat-icon>
+    <mat-icon *ngIf="showData">arrow_drop_up_circle</mat-icon>
+  </button>
+  <button mat-button (click)="reloadPage()">
+    <mat-icon *ngIf="showData">refresh</mat-icon>
+  </button>
+</div>
+
+<div *ngIf="showData" class="containerUser">
+  <table mat-table [dataSource]="listProductos" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="codigo">
+      <th mat-header-cell *matHeaderCellDef> Codigo del producto </th>
+      <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef> Nombre del producto </th>
+      <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="activo">
+      <th mat-header-cell *matHeaderCellDef> Está activo? </th>
+      <td mat-cell *matCellDef="let element"> {{element.activo}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="descripcion">
+      <th mat-header-cell *matHeaderCellDef> Descripcion del producto </th>
+      <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="familia">
+      <th mat-header-cell *matHeaderCellDef> Familia del producto </th>
+      <td mat-cell *matCellDef="let element"> {{element.familia}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="precioEstandar">
+      <th mat-header-cell *matHeaderCellDef> Precio estandar </th>
+      <td mat-cell *matCellDef="let element"> {{element.precioEstandar}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+
+<div class="header">
+  <h1 class="headerElement">Agregar Datos</h1>
+  <button mat-button (click)="AddData()">
+    <mat-icon *ngIf="!addData">arrow_drop_down_circle</mat-icon>
+    <mat-icon *ngIf="addData">arrow_drop_up_circle</mat-icon>
+  </button>
+</div>
+
+<div *ngIf="addData" class="containerUser">
+  <label style="margin-left:40px"><b>Datos del producto</b></label>
+  <form #forma="ngForm">
+
+    <label for="codigo"><b>Codigo del producto</b></label>
+    <input type="text"
+           #codigo="ngModel"
+           [(ngModel)]="register.codigo"
+           placeholder="Introduzca el codigo del producto"
+           name="codigo"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !codigo.invalid, 'is-invalid': codigo.invalid}" />
+    <div class="invalid-feedback" *ngIf="codigo.invalid && (codigo.dirty || codigo.touched)">
+      <div *ngIf="codigo.errors?.required">
+        Introduzca un codigo de producto valido por favor
+      </div>
+    </div>
+
+    <label for="nombre"><b>Nombre del producto</b></label>
+    <input type="text"
+           #nombre="ngModel"
+           [(ngModel)]="register.nombre"
+           placeholder="Introduzca el nombre del producto"
+           name="nombre"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !nombre.invalid, 'is-invalid': nombre.invalid}" />
+    <div class="invalid-feedback" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+      <div *ngIf="nombre.errors?.required">
+        Introduzca un nombre de producto válido por favor
+      </div>
+    </div>
+
+    <label for="activo"><b>Está activo?</b></label>
+    <input type="number"
+           #activo="ngModel"
+           [(ngModel)]="register.activo"
+           placeholder="Introduzca el codigo de activo o no activo (1 = Si/0 = No)"
+           name="activo"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !activo.invalid, 'is-invalid': activo.invalid}" />
+    <div class="invalid-feedback" *ngIf="activo.invalid && (activo.dirty || activo.touched)">
+      <div *ngIf="activo.errors?.required">
+        Introduzca un codigo de activo valido por favor
+      </div>
+    </div>
+
+    <label for="descripcion"><b>Descripcion</b></label>
+    <input type="text"
+           #descripcion="ngModel"
+           [(ngModel)]="register.descripcion"
+           placeholder="Introduzca la descripcion del producto"
+           name="descripcion"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !descripcion.invalid, 'is-invalid': descripcion.invalid}" />
+    <div class="invalid-feedback" *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)">
+      <div *ngIf="descripcion.errors?.required">
+        Introduzca una descripcion valida por favor
+      </div>
+    </div>
+
+    <label for="familia"><b>Familia de productos</b></label>
+    <input type="text"
+           #familia="ngModel"
+           [(ngModel)]="register.familia"
+           placeholder="Introduzca la familia del producto"
+           name="familia"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !familia.invalid, 'is-invalid': familia.invalid}" />
+    <div class="invalid-feedback" *ngIf="familia.invalid && (familia.dirty || familia.touched)">
+      <div *ngIf="familia.errors?.required">
+        Introduzca una familia de productos valida por favor
+      </div>
+    </div>
+
+    <label for="precioEstandar"><b>Precio estandar</b></label>
+    <input type="number"
+           #precioEstandar="ngModel"
+           [(ngModel)]="register.precioEstandar"
+           placeholder="Introduzca el precio estandar"
+           name="precioEstandar"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !precioEstandar.invalid, 'is-invalid': precioEstandar.invalid}" />
+    <div class="invalid-feedback" *ngIf="precioEstandar.invalid && (precioEstandar.dirty || precioEstandar.touched)">
+      <div *ngIf="precioEstandar.errors?.required">
+        Introduzca un precio estandar valido por favor
+      </div>
+    </div>
+
+    <div>
+      <button mat-button [disabled]="!forma.valid" (click)="submit()">Agregar Informacion</button>
+    </div>
+  </form>
+</div>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="true"><p style="color: white"> Loading... </p></ngx-spinner>
