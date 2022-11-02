@@ -193,7 +193,7 @@
            #tipo="ngModel"
            [(ngModel)]="registerRols.tipo"
            placeholder="Introduzca su tipo"
-           tipo="tipo"
+           name="tipo"
            class="form-control"
            required
            [ngClass]="{'is-valid': !tipo.invalid, 'is-invalid': tipo.invalid}" />
@@ -203,7 +203,7 @@
       </div>
     </div>
     <div>
-      <button mat-button [disabled]="!formaRol.valid" (click)="submitRols()">Agregar Informacion</button>
+      <button mat-button [disabled]="!formaRol.valid" (click)="submitRols()">Agregar Rol</button>
     </div>
   </form>
   <label style="margin-left: 40px; margin-top: 40px"><b>Departamentos</b></label>
@@ -237,7 +237,7 @@
       </div>
     </div>
     <div>
-      <button mat-button [disabled]="!formaDept.valid" (click)="submitDepts()">Agregar Informacion</button>
+      <button mat-button [disabled]="!formaDept.valid" (click)="submitDepts()">Agregar Departamento</button>
     </div>
   </form>
 </div>
