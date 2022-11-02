@@ -1,1 +1,273 @@
-<p>contactos works!</p>
+<div class="header">
+  <h1 class="headerElement">Datos Cargados</h1>
+  <button mat-button (click)="ShowData()">
+    <mat-icon *ngIf="!showData">arrow_drop_down_circle</mat-icon>
+    <mat-icon *ngIf="showData">arrow_drop_up_circle</mat-icon>
+  </button>
+  <button mat-button (click)="reloadPage()">
+    <mat-icon *ngIf="showData">refresh</mat-icon>
+  </button>
+</div>
+
+<div *ngIf="showData" class="containerUser">
+  <table mat-table [dataSource]="listContactos" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="cliente">
+      <th mat-header-cell *matHeaderCellDef> Nombre del cliente </th>
+      <td mat-cell *matCellDef="let element"> {{element.cliente}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="tipo">
+      <th mat-header-cell *matHeaderCellDef> Tipo </th>
+      <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="motivo">
+      <th mat-header-cell *matHeaderCellDef> Motivo </th>
+      <td mat-cell *matCellDef="let element"> {{element.motivo}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="telefono">
+      <th mat-header-cell *matHeaderCellDef> Telefono </th>
+      <td mat-cell *matCellDef="let element"> {{element.clave}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="correoElectronico">
+      <th mat-header-cell *matHeaderCellDef> Correo Electronico </th>
+      <td mat-cell *matCellDef="let element"> {{element.correoElectronico}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="estado">
+      <th mat-header-cell *matHeaderCellDef> Estado </th>
+      <td mat-cell *matCellDef="let element"> {{element.estado}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="direccion">
+      <th mat-header-cell *matHeaderCellDef> Direccion </th>
+      <td mat-cell *matCellDef="let element"> {{element.direccion}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="zonaSector">
+      <th mat-header-cell *matHeaderCellDef> Zona y Sector </th>
+      <td mat-cell *matCellDef="let element"> {{element.zonaSector}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="asesor">
+      <th mat-header-cell *matHeaderCellDef> Asesor </th>
+      <td mat-cell *matCellDef="let element"> {{element.asesor}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="descripcion">
+      <th mat-header-cell *matHeaderCellDef> Descripcion </th>
+      <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="idModulo">
+      <th mat-header-cell *matHeaderCellDef> ID Modulo </th>
+      <td mat-cell *matCellDef="let element"> {{element.idModulo}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+
+<div class="header">
+  <h1 class="headerElement">Agregar Datos</h1>
+  <button mat-button (click)="AddData()">
+    <mat-icon *ngIf="!addData">arrow_drop_down_circle</mat-icon>
+    <mat-icon *ngIf="addData">arrow_drop_up_circle</mat-icon>
+  </button>
+</div>
+
+<div *ngIf="addData" class="containerUser">
+  <label style="margin-left:40px"><b>Datos del contacto</b></label>
+  <form #forma="ngForm">
+
+    <label for="cliente"><b>Cliente</b></label>
+    <input type="text"
+           #cliente="ngModel"
+           [(ngModel)]="register.cliente"
+           placeholder="Introduzca el nombre del cliente"
+           name="cliente"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !cliente.invalid, 'is-invalid': cliente.invalid}" />
+    <div class="invalid-feedback" *ngIf="cliente.invalid && (cliente.dirty || cliente.touched)">
+      <div *ngIf="cliente.errors?.required">
+        Introduzca un nombre de cliente valido por favor
+      </div>
+    </div>
+
+    <label for="tipo"><b>Tipo</b></label>
+    <input type="number"
+           #tipo="ngModel"
+           [(ngModel)]="register.tipo"
+           placeholder="Introduzca el codigo del tipo"
+           name="tipo"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !tipo.invalid, 'is-invalid': tipo.invalid}" />
+    <div class="invalid-feedback" *ngIf="tipo.invalid && (tipo.dirty || tipo.touched)">
+      <div *ngIf="tipo.errors?.required">
+        Introduzca un codigo de tipo válido por favor
+      </div>
+    </div>
+
+    <label for="motivo"><b>Motivo</b></label>
+    <input type="text"
+           #motivo="ngModel"
+           [(ngModel)]="register.motivo"
+           placeholder="Introduzca el motivo"
+           name="motivo"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !motivo.invalid, 'is-invalid': motivo.invalid}" />
+    <div class="invalid-feedback" *ngIf="motivo.invalid && (motivo.dirty || motivo.touched)">
+      <div *ngIf="motivo.errors?.required">
+        Introduzca un motivo valido por favor
+      </div>
+    </div>
+
+    <label for="nombre"><b>Nombre</b></label>
+    <input type="text"
+           #nombre="ngModel"
+           [(ngModel)]="register.nombre"
+           placeholder="Introduzca el nombre del contacto"
+           name="nombre"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !nombre.invalid, 'is-invalid': nombre.invalid}" />
+    <div class="invalid-feedback" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+      <div *ngIf="nombre.errors?.required">
+        Introduzca un nombre valido por favor
+      </div>
+    </div>
+
+    <label for="telefono"><b>Telefono</b></label>
+    <input type="text"
+           #telefono="ngModel"
+           [(ngModel)]="register.telefono"
+           placeholder="Introduzca su telefono"
+           name="telefono"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !telefono.invalid, 'is-invalid': telefono.invalid}" />
+    <div class="invalid-feedback" *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)">
+      <div *ngIf="telefono.errors?.required">
+        Introduzca un telefono valido por favor
+      </div>
+    </div>
+
+    <label for="correoElectronico"><b>Correo Electronico</b></label>
+    <input type="text"
+           #correoElectronico="ngModel"
+           [(ngModel)]="register.correoElectronico"
+           placeholder="Introduzca el correo electronico"
+           name="correoElectronico"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !correoElectronico.invalid, 'is-invalid': correoElectronico.invalid}" />
+    <div class="invalid-feedback" *ngIf="correoElectronico.invalid && (correoElectronico.dirty || correoElectronico.touched)">
+      <div *ngIf="correoElectronico.errors?.required">
+        Introduzca un correo electronico válido por favor
+      </div>
+    </div>
+
+    <label for="estado"><b>Estado</b></label>
+    <input type="number"
+           #estado="ngModel"
+           [(ngModel)]="register.estado"
+           placeholder="Introduzca el codigo de estado"
+           name="estado"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !estado.invalid, 'is-invalid': estado.invalid}" />
+    <div class="invalid-feedback" *ngIf="estado.invalid && (estado.dirty || estado.touched)">
+      <div *ngIf="estado.errors?.required">
+        Introduzca un codigo de estado valido por favor
+      </div>
+    </div>
+
+    <label for="direccion"><b>Direccion</b></label>
+    <input type="text"
+           #direccion="ngModel"
+           [(ngModel)]="register.direccion"
+           placeholder="Introduzca la direccion"
+           name="direccion"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !direccion.invalid, 'is-invalid': direccion.invalid}" />
+    <div class="invalid-feedback" *ngIf="direccion.invalid && (direccion.dirty || direccion.touched)">
+      <div *ngIf="direccion.errors?.required">
+        Introduzca una direccion valida por favor
+      </div>
+    </div>
+
+    <label for="zonaSector"><b>Zona y Sector</b></label>
+    <input type="number"
+           #zonaSector="ngModel"
+           [(ngModel)]="register.zonaSector"
+           placeholder="Introduzca el codigo de su zona y sector"
+           name="zonaSector"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !zonaSector.invalid, 'is-invalid': zonaSector.invalid}" />
+    <div class="invalid-feedback" *ngIf="zonaSector.invalid && (zonaSector.dirty || zonaSector.touched)">
+      <div *ngIf="zonaSector.errors?.required">
+        Introduzca un codigo de zona y sector valido por favor
+      </div>
+    </div>
+
+    <label for="asesor"><b>Asesor</b></label>
+    <input type="number"
+           #asesor="ngModel"
+           [(ngModel)]="register.asesor"
+           placeholder="Introduzca su asesor"
+           name="asesor"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !asesor.invalid, 'is-invalid': asesor.invalid}" />
+    <div class="invalid-feedback" *ngIf="asesor.invalid && (asesor.dirty || asesor.touched)">
+      <div *ngIf="asesor.errors?.required">
+        Introduzca un asesor valido por favor
+      </div>
+    </div>
+
+    <label for="descripcion"><b>Descripcion</b></label>
+    <input type="text"
+           #descripcion="ngModel"
+           [(ngModel)]="register.descripcion"
+           placeholder="Introduzca la descripcion"
+           name="descripcion"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !descripcion.invalid, 'is-invalid': descripcion.invalid}" />
+    <div class="invalid-feedback" *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)">
+      <div *ngIf="descripcion.errors?.required">
+        Introduzca una descripcion valida por favor
+      </div>
+    </div>
+
+    <label for="idModulo"><b>ID Modulo</b></label>
+    <input type="number"
+           #idModulo="ngModel"
+           [(ngModel)]="register.idModulo"
+           placeholder="Introduzca el ID del modulo"
+           name="idModulo"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !idModulo.invalid, 'is-invalid': idModulo.invalid}" />
+    <div class="invalid-feedback" *ngIf="idModulo.invalid && (idModulo.dirty || idModulo.touched)">
+      <div *ngIf="idModulo.errors?.required">
+        Introduzca un ID de modulo valido por favor
+      </div>
+    </div>
+
+    <div>
+      <button mat-button [disabled]="!forma.valid" (click)="submit()">Agregar Informacion</button>
+    </div>
+  </form>
+</div>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="true"><p style="color: white"> Loading... </p></ngx-spinner>
+

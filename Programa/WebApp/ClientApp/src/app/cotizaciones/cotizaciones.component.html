@@ -1,1 +1,399 @@
-<p>cotizaciones works!</p>
+<div class="header">
+  <h1 class="headerElement">Datos Cargados</h1>
+  <button mat-button (click)="ShowData()">
+    <mat-icon *ngIf="!showData">arrow_drop_down_circle</mat-icon>
+    <mat-icon *ngIf="showData">arrow_drop_up_circle</mat-icon>
+  </button>
+  <button mat-button (click)="reloadPage()">
+    <mat-icon *ngIf="showData">refresh</mat-icon>
+  </button>
+</div>
+
+<div *ngIf="showData" class="containerUser">
+  <table mat-table [dataSource]="listCotizaciones" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="numero">
+      <th mat-header-cell *matHeaderCellDef> Numero de la cotizacion </th>
+      <td mat-cell *matCellDef="let element"> {{element.numero}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="nombreOportunidad">
+      <th mat-header-cell *matHeaderCellDef> Nombre de la oportunidad </th>
+      <td mat-cell *matCellDef="let element"> {{element.nombreOportunidad}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="fecha">
+      <th mat-header-cell *matHeaderCellDef> Fecha </th>
+      <td mat-cell *matCellDef="let element"> {{element.fecha}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="nombreCuenta">
+      <th mat-header-cell *matHeaderCellDef> Nombre de la cuenta </th>
+      <td mat-cell *matCellDef="let element"> {{element.nombreCuenta}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="mesAnnoProyectado">
+      <th mat-header-cell *matHeaderCellDef> Mes y año proyectado </th>
+      <td mat-cell *matCellDef="let element"> {{element.mesAnnoProyectado}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="asesor">
+      <th mat-header-cell *matHeaderCellDef> Codigo del asesor </th>
+      <td mat-cell *matCellDef="let element"> {{element.asesor}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="fechaCierre">
+      <th mat-header-cell *matHeaderCellDef> Fecha de cierre </th>
+      <td mat-cell *matCellDef="let element"> {{element.fechaCierre}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="etapa">
+      <th mat-header-cell *matHeaderCellDef> Codigo de la etapa </th>
+      <td mat-cell *matCellDef="let element"> {{element.etapa}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="moneda">
+      <th mat-header-cell *matHeaderCellDef> Codigo de la moneda </th>
+      <td mat-cell *matCellDef="let element"> {{element.moneda}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="probabilidad">
+      <th mat-header-cell *matHeaderCellDef> Codigo de la probabilidad </th>
+      <td mat-cell *matCellDef="let element"> {{element.probabilidad}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="ordenCompra">
+      <th mat-header-cell *matHeaderCellDef> Codigo de la orden de compra </th>
+      <td mat-cell *matCellDef="let element"> {{element.ordenCompra}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="tipo">
+      <th mat-header-cell *matHeaderCellDef> Codigo del tipo </th>
+      <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="descripcion">
+      <th mat-header-cell *matHeaderCellDef> Descripcion </th>
+      <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="zonaSector">
+      <th mat-header-cell *matHeaderCellDef> Zona y Sector </th>
+      <td mat-cell *matCellDef="let element"> {{element.zonaSector}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="contacto">
+      <th mat-header-cell *matHeaderCellDef> Nombre del contacto </th>
+      <td mat-cell *matCellDef="let element"> {{element.contacto}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="numeroFactura">
+      <th mat-header-cell *matHeaderCellDef> Numero de la factura </th>
+      <td mat-cell *matCellDef="let element"> {{element.numeroFactura}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="estado">
+      <th mat-header-cell *matHeaderCellDef> Estado </th>
+      <td mat-cell *matCellDef="let element"> {{element.estado}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="inflacion">
+      <th mat-header-cell *matHeaderCellDef> Codigo de inflacion </th>
+      <td mat-cell *matCellDef="let element"> {{element.inflacion}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+
+<div class="header">
+  <h1 class="headerElement">Agregar Datos</h1>
+  <button mat-button (click)="AddData()">
+    <mat-icon *ngIf="!addData">arrow_drop_down_circle</mat-icon>
+    <mat-icon *ngIf="addData">arrow_drop_up_circle</mat-icon>
+  </button>
+</div>
+
+<div *ngIf="addData" class="containerUser">
+  <label style="margin-left:40px"><b>Datos de la cotizacion</b></label>
+  <form #forma="ngForm">
+
+    <label for="numero"><b>Numero de la cotizacion</b></label>
+    <input type="text"
+           #numero="ngModel"
+           [(ngModel)]="register.numero"
+           placeholder="Introduzca el numero de la cotizacion"
+           name="numero"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !numero.invalid, 'is-invalid': numero.invalid}" />
+    <div class="invalid-feedback" *ngIf="numero.invalid && (numero.dirty || numero.touched)">
+      <div *ngIf="numero.errors?.required">
+        Introduzca un numero de cotizacion valido por favor
+      </div>
+    </div>
+
+    <label for="nombreOportunidad"><b>Nombre de la oportunidad</b></label>
+    <input type="text"
+           #nombreOportunidad="ngModel"
+           [(ngModel)]="register.nombreOportunidad"
+           placeholder="Introduzca el nombre de la oportunidad"
+           name="nombreOportunidad"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !nombreOportunidad.invalid, 'is-invalid': nombreOportunidad.invalid}" />
+    <div class="invalid-feedback" *ngIf="nombreOportunidad.invalid && (nombreOportunidad.dirty || nombreOportunidad.touched)">
+      <div *ngIf="nombreOportunidad.errors?.required">
+        Introduzca un nombre de la oportunidad valido por favor
+      </div>
+    </div>
+
+    <label for="fecha"><b>Fecha</b></label>
+    <input type="text"
+           #fecha="ngModel"
+           [(ngModel)]="register.fecha"
+           placeholder="Introduzca la fecha"
+           name="fecha"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !fecha.invalid, 'is-invalid': fecha.invalid}" />
+    <div class="invalid-feedback" *ngIf="fecha.invalid && (fecha.dirty || fecha.touched)">
+      <div *ngIf="fecha.errors?.required">
+        Introduzca una fecha valida por favor
+      </div>
+    </div>
+
+    <label for="nombreCuenta"><b>Nombre de la cuenta</b></label>
+    <input type="text"
+           #nombreCuenta="ngModel"
+           [(ngModel)]="register.nombreCuenta"
+           placeholder="Introduzca el nombre de la cuenta"
+           name="nombreCuenta"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !nombreCuenta.invalid, 'is-invalid': nombreCuenta.invalid}" />
+    <div class="invalid-feedback" *ngIf="nombreCuenta.invalid && (nombreCuenta.dirty || nombreCuenta.touched)">
+      <div *ngIf="nombreCuenta.errors?.required">
+        Introduzca un nombre de cuenta valido por favor
+      </div>
+    </div>
+
+    <label for="mesAnnoProyectado"><b>Mes y año proyectado</b></label>
+    <input type="text"
+           #mesAnnoProyectado="ngModel"
+           [(ngModel)]="register.mesAnnoProyectado"
+           placeholder="Introduzca el mes y año proyectado"
+           name="mesAnnoProyectado"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !mesAnnoProyectado.invalid, 'is-invalid': mesAnnoProyectado.invalid}" />
+    <div class="invalid-feedback" *ngIf="mesAnnoProyectado.invalid && (mesAnnoProyectado.dirty || mesAnnoProyectado.touched)">
+      <div *ngIf="mesAnnoProyectado.errors?.required">
+        Introduzca un mes y año proyectado valido por favor
+      </div>
+    </div>
+
+    <label for="asesor"><b>Asesor</b></label>
+    <input type="number"
+           #asesor="ngModel"
+           [(ngModel)]="register.asesor"
+           placeholder="Introduzca su asesor"
+           name="asesor"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !asesor.invalid, 'is-invalid': asesor.invalid}" />
+    <div class="invalid-feedback" *ngIf="asesor.invalid && (asesor.dirty || asesor.touched)">
+      <div *ngIf="asesor.errors?.required">
+        Introduzca un asesor valido por favor
+      </div>
+    </div>
+
+    <label for="fechaCierre"><b>Fecha de cierre</b></label>
+    <input type="text"
+           #fechaCierre="ngModel"
+           [(ngModel)]="register.fechaCierre"
+           placeholder="Introduzca la fecha de cierre"
+           name="fechaCierre"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !fechaCierre.invalid, 'is-invalid': fechaCierre.invalid}" />
+    <div class="invalid-feedback" *ngIf="fechaCierre.invalid && (fechaCierre.dirty || fechaCierre.touched)">
+      <div *ngIf="fechaCierre.errors?.required">
+        Introduzca una fecha de cierre valida por favor
+      </div>
+    </div>
+
+    <label for="etapa"><b>Etapa</b></label>
+    <input type="number"
+           #etapa="ngModel"
+           [(ngModel)]="register.etapa"
+           placeholder="Introduzca el codigo de etapa"
+           name="etapa"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !etapa.invalid, 'is-invalid': etapa.invalid}" />
+    <div class="invalid-feedback" *ngIf="etapa.invalid && (etapa.dirty || etapa.touched)">
+      <div *ngIf="etapa.errors?.required">
+        Introduzca un codigo de etapa valido por favor
+      </div>
+    </div>
+
+    <label for="moneda"><b>Moneda</b></label>
+    <input type="number"
+           #moneda="ngModel"
+           [(ngModel)]="register.moneda"
+           placeholder="Introduzca el codigo de moneda"
+           name="moneda"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !moneda.invalid, 'is-invalid': moneda.invalid}" />
+    <div class="invalid-feedback" *ngIf="moneda.invalid && (moneda.dirty || moneda.touched)">
+      <div *ngIf="moneda.errors?.required">
+        Introduzca un codigo de moneda valido por favor
+      </div>
+    </div>
+
+    <label for="probabilidad"><b>Probabilidad</b></label>
+    <input type="number"
+           #probabilidad="ngModel"
+           [(ngModel)]="register.probabilidad"
+           placeholder="Introduzca el codigo de probabilidad"
+           name="probabilidad"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !probabilidad.invalid, 'is-invalid': probabilidad.invalid}" />
+    <div class="invalid-feedback" *ngIf="probabilidad.invalid && (probabilidad.dirty || probabilidad.touched)">
+      <div *ngIf="probabilidad.errors?.required">
+        Introduzca un codigo de probabilidad valido por favor
+      </div>
+    </div>
+
+    <label for="ordenCompra"><b>Codigo de orden de compra</b></label>
+    <input type="text"
+           #ordenCompra="ngModel"
+           [(ngModel)]="register.ordenCompra"
+           placeholder="Introduzca el codigo de orden de compra"
+           name="ordenCompra"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !ordenCompra.invalid, 'is-invalid': ordenCompra.invalid}" />
+    <div class="invalid-feedback" *ngIf="ordenCompra.invalid && (ordenCompra.dirty || ordenCompra.touched)">
+      <div *ngIf="ordenCompra.errors?.required">
+        Introduzca un codigo de orden de compra válido por favor
+      </div>
+    </div>
+
+    <label for="tipo"><b>Tipo</b></label>
+    <input type="number"
+           #tipo="ngModel"
+           [(ngModel)]="register.tipo"
+           placeholder="Introduzca el codigo del tipo"
+           name="tipo"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !tipo.invalid, 'is-invalid': tipo.invalid}" />
+    <div class="invalid-feedback" *ngIf="tipo.invalid && (tipo.dirty || tipo.touched)">
+      <div *ngIf="tipo.errors?.required">
+        Introduzca un codigo de tipo válido por favor
+      </div>
+    </div>
+
+    <label for="descripcion"><b>Descripcion</b></label>
+    <input type="text"
+           #descripcion="ngModel"
+           [(ngModel)]="register.descripcion"
+           placeholder="Introduzca la descripcion"
+           name="descripcion"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !descripcion.invalid, 'is-invalid': descripcion.invalid}" />
+    <div class="invalid-feedback" *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)">
+      <div *ngIf="descripcion.errors?.required">
+        Introduzca una descripcion valida por favor
+      </div>
+    </div>
+
+    <label for="zonaSector"><b>Zona y Sector</b></label>
+    <input type="number"
+           #zonaSector="ngModel"
+           [(ngModel)]="register.zonaSector"
+           placeholder="Introduzca el codigo de su zona y sector"
+           name="zonaSector"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !zonaSector.invalid, 'is-invalid': zonaSector.invalid}" />
+    <div class="invalid-feedback" *ngIf="zonaSector.invalid && (zonaSector.dirty || zonaSector.touched)">
+      <div *ngIf="zonaSector.errors?.required">
+        Introduzca un codigo de zona y sector valido por favor
+      </div>
+    </div>
+
+    <label for="contacto"><b>Nombre del contacto</b></label>
+    <input type="text"
+           #contacto="ngModel"
+           [(ngModel)]="register.contacto"
+           placeholder="Introduzca el nombre del contacto"
+           name="contacto"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !contacto.invalid, 'is-invalid': contacto.invalid}" />
+    <div class="invalid-feedback" *ngIf="contacto.invalid && (contacto.dirty || contacto.touched)">
+      <div *ngIf="contacto.errors?.required">
+        Introduzca un nombre de contacto valido por favor
+      </div>
+    </div>
+
+    <label for="numeroFactura"><b>Numero de factura</b></label>
+    <input type="text"
+           #numeroFactura="ngModel"
+           [(ngModel)]="register.numeroFactura"
+           placeholder="Introduzca el numero de factura"
+           name="numeroFactura"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !numeroFactura.invalid, 'is-invalid': numeroFactura.invalid}" />
+    <div class="invalid-feedback" *ngIf="numeroFactura.invalid && (numeroFactura.dirty || numeroFactura.touched)">
+      <div *ngIf="numeroFactura.errors?.required">
+        Introduzca un numero de factura valido por favor
+      </div>
+    </div>
+
+    <label for="estado"><b>Estado</b></label>
+    <input type="number"
+           #estado="ngModel"
+           [(ngModel)]="register.estado"
+           placeholder="Introduzca el codigo de estado"
+           name="estado"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !estado.invalid, 'is-invalid': estado.invalid}" />
+    <div class="invalid-feedback" *ngIf="estado.invalid && (estado.dirty || estado.touched)">
+      <div *ngIf="estado.errors?.required">
+        Introduzca un codigo de estado valido por favor
+      </div>
+    </div>
+
+    <label for="inflacion"><b>Codigo de inflacion</b></label>
+    <input type="number"
+           #inflacion="ngModel"
+           [(ngModel)]="register.inflacion"
+           placeholder="Introduzca el codigo de inflacion"
+           name="inflacion"
+           class="form-control"
+           required
+           [ngClass]="{'is-valid': !inflacion.invalid, 'is-invalid': inflacion.invalid}" />
+    <div class="invalid-feedback" *ngIf="inflacion.invalid && (inflacion.dirty || inflacion.touched)">
+      <div *ngIf="inflacion.errors?.required">
+        Introduzca un codigo de inflacion valido por favor
+      </div>
+    </div>
+
+    <div>
+      <button mat-button [disabled]="!forma.valid" (click)="submit()">Agregar Informacion</button>
+    </div>
+  </form>
+</div>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="true"><p style="color: white"> Loading... </p></ngx-spinner>
+
+
