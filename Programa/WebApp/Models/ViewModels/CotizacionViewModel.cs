@@ -9,8 +9,8 @@ namespace WebApp.Controllers.Models.ViewModels
         public string nombreOportunidad { get; set; }
         public string fecha { get; set; }
         public string nombreCuenta { get; set; }
-        public string mesAnnoProyectado { get; set; }
-        public string asesor { get; set; }
+        public string mesAñoProyectado { get; set; }
+        public Int16 asesor { get; set; }
         public string fechaCierre { get; set; }
         public Int16 etapa { get; set; }
         public Int16 moneda { get; set; }

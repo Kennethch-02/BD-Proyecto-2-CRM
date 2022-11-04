@@ -26,9 +26,6 @@ namespace WebApp.Controllers.Models
         public DbSet<Asesor> Asesor { get; set; }
         public DbSet<EstadoContacto> EstadoContacto { get; set; }
     }
-    //public class Prueba{
-    //     public int Id { get; set; }
-    //}
     public class Usuario {
         [Key]
         public string cedula { get; set; }
@@ -37,6 +34,17 @@ namespace WebApp.Controllers.Models
         public Int16 departamento { get; set; }
         public string clave { get; set; }
         public Int16 rol { get; set; }
+    }
+    public class UsuarioSet
+    {
+        [Key]
+        public string cedula { get; set; }
+        public string nombre { get; set; }
+        public string apellidos { get; set; }
+        public Int16 departamento { get; set; }
+        public string clave { get; set; }
+        public Int16 rol { get; set; }
+        public char modo { get; set; }
     }
     public class Rol
     {
@@ -57,16 +65,15 @@ namespace WebApp.Controllers.Models
         public string nombreDeUsuario { get; set; }
         public string correoElectronico { get; set; }
         public string contactoPrincipal { get; set; }
-        public int moneda { get; set; }
+        public Int16 moneda { get; set; }
         public string telefono { get; set; }
         public string celular { get; set; }
         public string sitioWeb { get; set; }
         public string infoAdicional { get; set; }
-        public string asesor { get; set; }
-        public int zonaSector { get; set; }
+        public Int16 asesor { get; set; }
+        public Int16 zonaSector { get; set; }
 
     }
-
     public class Contacto
     {
         [Key]
@@ -79,7 +86,7 @@ namespace WebApp.Controllers.Models
         public Int16 estado { get; set; }
         public string direccion { get; set; }
         public Int16 zonaSector { get; set; }
-        public string asesor { get; set; }
+        public Int16 asesor { get; set; }
         public string descripcion { get; set; }
         public Int16 idModulo { get; set; }
     }
@@ -102,8 +109,8 @@ namespace WebApp.Controllers.Models
         public string nombreOportunidad { get; set; }
         public string fecha { get; set; }
         public string nombreCuenta { get; set; }
-        public string mesAnnoProyectado { get; set; }
-        public string asesor { get; set; }
+        public string mesAñoProyectado { get; set; }
+        public Int16 asesor { get; set; }
         public string fechaCierre { get; set; }
         public Int16 etapa { get; set; }
         public Int16 moneda { get; set; }
@@ -117,6 +124,7 @@ namespace WebApp.Controllers.Models
         public Int16 estado { get; set; }
         public Int16 inflacion { get; set; }
     }
+
     public class Modulo
     {
         [Key]

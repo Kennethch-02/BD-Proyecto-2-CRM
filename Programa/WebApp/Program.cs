@@ -10,7 +10,7 @@ builder.Services.AddControllersWithViews();
 SqlConnectionStringBuilder connectS = new();
 
 // Constuccion de la variable coneccion
-connectS.DataSource = "DESKTOP-86NAAQJ";
+connectS.DataSource = "KENNETHPC";
 connectS.InitialCatalog = "SistemaCRM";
 connectS.IntegratedSecurity = true;
 

@@ -13,7 +13,7 @@ namespace WebApp.Controllers.Models.ViewModels
         public string celular { get; set; }
         public string sitioWeb { get; set; }
         public string infoAdicional { get; set; }
-        public string asesor { get; set; }
+        public Int16 asesor { get; set; }
         public Int16 zonaSector { get; set; }
     }
 }

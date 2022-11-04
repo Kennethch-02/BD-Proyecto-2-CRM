@@ -1,4 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Query.Internal;
+using WebApp.Controllers.Models;
 using WebApp.Controllers.Models.ViewModels;
 using WebApp.Models.ViewModels;
 
@@ -9,8 +14,16 @@ namespace WebApp.Controllers
     public class AppController : Controller
     {
         private Models.MyDBContext db;
+
         public AppController(Models.MyDBContext context) {
             db = context;
+        }
+        //Agregar valores mediante procedimientos almacenados
+        [HttpGet("[action]/{cedula}/{nombre}/{apellidos}/{departamento}/{clave}/{rol}/{modo}")]
+        public IAsyncEnumerable<Usuario> UsuarioProc(string cedula, string nombre, string apellidos, Int16 departamento, string clave, Int16 rol, char modo)
+        {
+            string exec = String.Format("Exec UsuarioProc '{0}','{1}','{2}','{3}','{4}','{5}','{6}'", cedula, nombre, apellidos, departamento, clave, rol, modo);
+            return db.Usuario.FromSqlRaw(exec).AsAsyncEnumerable();
         }
         [HttpGet("[action]")]
         public IEnumerable<UserViewModel> Usuarios () {
@@ -113,7 +126,7 @@ namespace WebApp.Controllers
                                                      nombreOportunidad = d.nombreOportunidad,
                                                      fecha = d.fecha,
                                                      nombreCuenta = d.nombreCuenta,
-                                                     mesAnnoProyectado = d.mesAnnoProyectado,
+                                                     mesAñoProyectado = d.mesAñoProyectado,
                                                      asesor = d.asesor,
                                                      fechaCierre = d.fechaCierre,
                                                      etapa = d.etapa,

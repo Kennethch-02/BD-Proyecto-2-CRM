@@ -14,7 +14,7 @@ namespace WebApp.Controllers.Models.ViewModels
         public Int16 estado { get; set; }
         public string direccion { get; set; }
         public Int16 zonaSector { get; set; }
-        public string asesor { get; set; }
+        public Int16 asesor { get; set; }
         public string descripcion { get; set; }
         public Int16 idModulo { get; set; }
     }

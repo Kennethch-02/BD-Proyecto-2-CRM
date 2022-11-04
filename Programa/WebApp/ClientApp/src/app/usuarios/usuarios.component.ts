@@ -16,6 +16,9 @@ export class UsuariosComponent{
   public showData: boolean = false;
   public addData: boolean = false;
   public haveData: boolean = false;
+  private http: HttpClient | undefined;
+  private baseUrl: string | undefined;
+  private sRegisterUser: string | undefined;
   registerUsers: Usuarios = {
     cedula: "",
     nombre: "",
@@ -34,7 +37,9 @@ export class UsuariosComponent{
     
   }
   constructor(http: HttpClient, @Inject("BASE_URL") baseUrl: string, private spinner: NgxSpinnerService) {
-    this.showSpinner()
+    this.showSpinner();
+    this.http = http;
+    this.baseUrl = baseUrl;
     http.get<Usuarios[]>(baseUrl + "api/app/usuarios").subscribe(result => {
       this.listUsers = result;
       this.haveData = true;
@@ -66,7 +71,19 @@ export class UsuariosComponent{
     this.addData = !this.addData;
   }
   public submitUsers() {
-
+    this.sRegisterUser = "";
+    this.sRegisterUser += this.registerUsers.cedula + "/";
+    this.sRegisterUser += this.registerUsers.nombre + "/";
+    this.sRegisterUser += this.registerUsers.apellidos + "/";
+    this.sRegisterUser += this.registerUsers.departamento + "/";
+    this.sRegisterUser += this.registerUsers.clave + "/";
+    this.sRegisterUser += this.registerUsers.rol + "/";
+    this.sRegisterUser += "I";
+    console.log(this.sRegisterUser);
+    console.log(this.baseUrl + "api/app/usuarioproc/" + this.sRegisterUser);
+    this.http?.get<Usuarios>(this.baseUrl + "api/app/usuarioproc/" + this.sRegisterUser).subscribe(result => {
+      console.log(result)
+    }, error => console.error(error));
   }
   public submitRols() {
 
