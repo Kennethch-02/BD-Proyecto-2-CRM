@@ -493,40 +493,121 @@ BEGIN
 END
 GO
 
-CREATE PROC RolProc
-				@id smallint,
-				@tipo varchar(15),
-				@modo char(1)
+-- PROCEDIMIENTOS ALMACENADOS PARA CLIENTES
+
+CREATE PROCEDURE agregarCliente --AGREGAR
+
+	@nombreDeUsuario varchar(20),
+	@correoElectronico varchar(30),
+	@moneda smallint,
+	@telefono varchar(15),
+	@celular varchar(15),
+	@sitioWeb varchar(30),
+	@infoAdicional varchar(200),
+	@asesor varchar(10),
+	@zonaSector smallint
+
 AS
-if (@modo='I')
-BEGIN
-	INSERT Rol VALUES (@tipo)
-END
-if (@modo='U')
-BEGIN
-	UPDATE Rol SET tipo = @tipo WHERE id = @id
-END
-if (@modo='D')
-BEGIN
-	DELETE FROM Rol WHERE id = @id
-END
+BEGIN TRY
+	INSERT INTO Cliente(nombreDeUsuario, correoElectronico, moneda, telefono, celular, sitioWeb, infoAdicional, asesor, zonaSector)
+	VALUES(@nombreDeUsuario, @correoElectronico, @moneda, @telefono, @celular, @sitioWeb, @infoAdicional, @asesor, @zonaSector)
+	RETURN 0
+END TRY
+BEGIN CATCH
+	RETURN -1
+END CATCH
+
+CREATE PROCEDURE eliminarCliente -- ELIMINAR
+
+	@nombreDeUsuario varchar(20),
+
+AS
+BEGIN TRY
+	DELETE FROM Cliente WHERE nombreDeUsuario = @nombreDeUsuario
+	RETURN 0
+END TRY
+BEGIN CATCH
+	RETURN -1
+END CATCH;
 GO
 
-CREATE PROC DepartamentoProc
-				@id smallint,
-				@nombre varchar(15),
-				@modo char(1)
+CREATE PROCEDURE editarCliente -- EDITAR
+
+	@nombreDeUsuario varchar(20),
+	@correoElectronico varchar(30),
+	@moneda smallint,
+	@telefono varchar(15),
+	@celular varchar(15),
+	@sitioWeb varchar(30),
+	@infoAdicional varchar(200),
+	@asesor varchar(10),
+	@zonaSector smallint
 AS
-if (@modo='I')
-BEGIN
-	INSERT Departamento VALUES (@nombre)
-END
-if (@modo='U')
-BEGIN
-	UPDATE Departamento SET nombre = @nombre WHERE id = @id
-END
-if (@modo='D')
-BEGIN
-	DELETE FROM Departamento WHERE id = @id
-END
+BEGIN TRY
+	UPDATE Cliente
+	SET nombreDeUsuario = @nombreDeUsuario, correoElectronico = @correoElectronico, moneda = @moneda,
+		telefono = @telefono, celular = @celular, sitioWeb = @sitioWeb, infoAdicional = @infoAdicional,
+		asesor = @asesor, zonaSector = @zonaSector
+	WHERE nombreDeUsuario = @nombreDeUsuario;
+	RETURN 0
+END TRY
+BEGIN CATCH
+	RETURN -1
+END CATCH;
+GO
+
+-- PROCEDIMIENTOS ALMACENADOS PARA PRODUCTOS
+
+CREATE PROCEDURE agregarProducto -- AGREGAR
+
+	@codigo varchar(10), 
+	@nombre varchar(20),
+	@activo smallint, 
+	@descripcion varchar(50),
+	@familia varchar(10),
+	@precio decimal(9,2)
+	
+AS
+BEGIN TRY
+	INSERT INTO producto(codigo, nombre, activo, descripcion, familia, precioEstandar) 
+	VALUES(@codigo, @nombre, @activo, @descripcion, @familia, @precio)
+	RETURN 0
+END TRY
+BEGIN CATCH
+	RETURN -1
+END CATCH
+GO
+
+CREATE PROCEDURE eliminarProducto -- ELIMINAR
+
+	@codigo varchar(10),
+
+AS
+BEGIN TRY
+	DELETE FROM Producto WHERE codigo = @codigo
+	RETURN 0
+END TRY
+BEGIN CATCH
+	RETURN -1
+END CATCH;
+GO
+
+CREATE PROCEDURE editarProducto
+
+	@codigo varchar(10), 
+	@nombre varchar(20),
+	@activo smallint, 
+	@descripcion varchar(50),
+	@familia varchar(10),
+	@precio decimal(9,2)
+AS
+BEGIN TRY
+	UPDATE Producto
+	SET codigo = @codigo, nombre = @nombre, activo = @activo ,descripcion = @descripcion, familia = @familia, precio = @precio
+	WHERE @codigo = codigo;
+	RETURN 0
+END TRY
+BEGIN CATCH
+	RETURN -1
+END CATCH;
 GO
